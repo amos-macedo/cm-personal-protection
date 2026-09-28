@@ -1,12 +1,12 @@
-# Blank Canvas Project
+# Pixel Perfect Copy
 
-vamo la, gere um rpoejto v\zio, nada de conteudo ainda, uma tela em branco
+Implement exactly the screenshot and nothing else
 
 This project was built with [Lovable](https://lovable.dev).
 
 ## Build with Lovable
 
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/e6cb1661-ac93-4b8a-8fce-1b5fb0a54196).
+Continue developing this project in the [Lovable editor](https://lovable.dev/projects/be7617c6-6ec5-4222-af4c-d933136596e2).
 
 - **Ship faster**: describe what you want to build and Lovable handles the code.
 - **Stay in sync**: every change made in Lovable is committed straight to this repository.
