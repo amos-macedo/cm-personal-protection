@@ -27,7 +27,7 @@ const faqs = [
   },
   {
     q: "Onde a clínica está localizada?",
-    a: `${site.city}. ${site.address}`,
+    a: `Estamos no Complexo Heron Marinho (Torre B, Sala 608), no bairro do Catolé em Campina Grande - PB. O complexo dispõe de estacionamento e acessibilidade total. Você pode conferir o mapa interativo na seção de localização do site.`,
   },
 ];
 
@@ -35,8 +35,8 @@ export function Faq() {
   const [open, setOpen] = useState<number | null>(null);
 
   return (
-    <section className="bg-bone py-[14vh]">
-      <div className="mx-auto max-w-[110rem] px-6 md:px-10">
+    <section id="faq" className="scroll-mt-24 bg-bone py-[12vh]">
+      <div className="mx-auto max-w-7xl px-6 md:px-10">
         <div className="grid gap-12 lg:grid-cols-12">
           <h2 className="font-display text-[clamp(2rem,3.6vw,3.4rem)] leading-tight text-ink lg:col-span-4">
             <MaskedLines lines={["Perguntas", "frequentes."]} />

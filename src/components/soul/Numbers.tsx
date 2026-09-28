@@ -5,7 +5,12 @@ import { Reveal } from "./motion-primitives";
 /** PLACEHOLDER — números ilustrativos, confirmar com a clínica. */
 const stats = [
   { value: 10, suffix: "+", label: "anos de experiência" },
-  { value: 2000, suffix: "+", label: "pacientes", format: (n: number) => n.toLocaleString("pt-BR") },
+  {
+    value: 2000,
+    suffix: "+",
+    label: "pacientes",
+    format: (n: number) => n.toLocaleString("pt-BR"),
+  },
   { value: 4.9, suffix: "", label: "avaliação média", decimals: 1 },
   { value: 100, suffix: "%", label: "atenção aos detalhes" },
 ];
@@ -17,8 +22,8 @@ function Counter({
   run,
 }: {
   value: number;
-  decimals?: number;
-  format?: (n: number) => string;
+  decimals?: number | undefined;
+  format?: ((n: number) => string) | undefined;
   run: boolean;
 }) {
   const reduce = useReducedMotion();
@@ -58,12 +63,7 @@ export function Numbers() {
             <Reveal key={s.label} delay={0.08 * i}>
               <div className="border-l border-bone/15 pl-6">
                 <p className="font-display text-[clamp(2.6rem,5vw,5rem)] leading-none text-bone">
-                  <Counter
-                    value={s.value}
-                    decimals={s.decimals}
-                    format={s.format}
-                    run={inView}
-                  />
+                  <Counter value={s.value} decimals={s.decimals} format={s.format} run={inView} />
                   {s.suffix}
                 </p>
                 <p className="mt-3 text-xs tracking-[0.18em] text-bone/55 uppercase">{s.label}</p>

@@ -1,107 +1,82 @@
-import { useRef } from "react";
-import { motion, useScroll, useTransform, useReducedMotion } from "motion/react";
 import reception from "@/assets/clinic-reception.jpg";
 import chair from "@/assets/clinic-chair.jpg";
 import materials from "@/assets/materials.jpg";
-import hands from "@/assets/hands-detail.jpg";
 import { MaskedLines, Reveal } from "./motion-primitives";
 
+const experiences = [
+  {
+    tag: "01 — Ambiente",
+    title: "Recepção acolhedora e privativa",
+    desc: "Luz natural, design biofílico e silêncio. Um espaço pensado para reduzir o ritmo e a ansiedade antes mesmo do primeiro contato clínico.",
+    img: reception,
+    alt: "Recepção da clínica com iluminação acolhedora e decoração minimalista",
+  },
+  {
+    tag: "02 — Atendimento",
+    title: "Consultórios confortáveis",
+    desc: "Salas individuais com tecnologia silenciosa e ergonomia avançada, proporcionando conforto contínuo durante cada etapa do seu tratamento.",
+    img: chair,
+    alt: "Consultório odontológico moderno com cadeira ergonômica e vista agradável",
+  },
+  {
+    tag: "03 — Precisão",
+    title: "Biomateriais e rigor técnico",
+    desc: "Protocolos biológicos estritos, instrumentais esterilizados em rastreabilidade cirúrgica e cerâmicas de padrão internacional.",
+    img: materials,
+    alt: "Escala de cor e materiais odontológicos de alta precisão sobre linho",
+  },
+];
+
 export function Experience() {
-  const ref = useRef<HTMLElement>(null);
-  const reduce = useReducedMotion();
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
-
-  const yA = useTransform(scrollYProgress, [0, 1], ["10%", "-10%"]);
-  const yB = useTransform(scrollYProgress, [0, 1], ["-8%", "12%"]);
-  const yC = useTransform(scrollYProgress, [0, 1], ["16%", "-6%"]);
-  const xIn = useTransform(scrollYProgress, [0.1, 0.6], ["18%", "0%"]);
-
   return (
-    <section ref={ref} id="experiencia" className="scroll-mt-24 overflow-hidden bg-sand py-[14vh]">
-      <div className="mx-auto max-w-[110rem] px-6 md:px-10">
-        <h2 className="max-w-[18ch] font-display text-[clamp(2.2rem,5.4vw,5.2rem)] leading-[1] text-ink">
-          <MaskedLines lines={["Você vai perceber a", "diferença nos detalhes."]} />
-        </h2>
+    <section id="experiencia" className="scroll-mt-24 bg-sand py-[12vh]">
+      <div className="mx-auto max-w-7xl px-6 md:px-10">
+        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+          <div>
+            <Reveal>
+              <p className="eyebrow text-sage-deep">Experiência Soul'Encanto</p>
+            </Reveal>
+            <h2 className="mt-3 max-w-[18ch] font-display text-[clamp(2.2rem,4.4vw,4.5rem)] leading-[1.02] text-ink">
+              <MaskedLines lines={["A diferença está", "em cada detalhe."]} />
+            </h2>
+          </div>
 
-        <div className="mt-20 grid grid-cols-12 gap-x-5 gap-y-16">
-          <motion.figure
-            className="col-span-12 md:col-span-7"
-            style={reduce ? {} : { y: yA }}
-          >
-            <div className="aspect-3/2 overflow-hidden">
-              <img
-                src={reception}
-                alt="Recepção da clínica com luz natural e tons quentes"
-                loading="lazy"
-                width={1600}
-                height={1104}
-                className="h-full w-full object-cover transition-transform duration-[1.4s] [transition-timing-function:var(--ease-soul)] hover:scale-105"
-              />
-            </div>
-            <figcaption className="mt-3 text-xs tracking-[0.16em] text-graphite uppercase">
-              Recepção — respirar antes de começar
-            </figcaption>
-          </motion.figure>
-
-          <motion.figure
-            className="col-span-8 md:col-span-4 md:col-start-9 md:-mt-24"
-            style={reduce ? {} : { y: yB }}
-          >
-            <div className="aspect-4/5 overflow-hidden">
-              <img
-                src={chair}
-                alt="Sala de atendimento minimalista com luz suave"
-                loading="lazy"
-                width={1408}
-                height={1760}
-                className="h-full w-full object-cover transition-transform duration-[1.4s] [transition-timing-function:var(--ease-soul)] hover:scale-105"
-              />
-            </div>
-          </motion.figure>
-
-          <Reveal className="col-span-12 md:col-span-4 md:col-start-2" delay={0.05}>
-            <p className="font-display text-2xl leading-snug text-petrol md:text-3xl">
-              O silêncio certo, a luz certa, o tempo certo.
-            </p>
-            <p className="mt-4 max-w-xs text-sm leading-relaxed text-graphite">
-              Ambientes pensados para reduzir a ansiedade antes mesmo da primeira palavra.
+          <Reveal delay={0.1}>
+            <p className="max-w-sm text-sm leading-relaxed text-graphite">
+              O silêncio certo, a luz certa, o tempo necessário. Ambientes planejados para
+              transformar sua percepção sobre ir ao dentista.
             </p>
           </Reveal>
+        </div>
 
-          <motion.figure
-            className="col-span-12 md:col-span-6 md:col-start-7"
-            style={reduce ? {} : { x: xIn, y: yC }}
-          >
-            <div className="aspect-3/2 overflow-hidden">
-              <img
-                src={materials}
-                alt="Materiais e escala de cor sobre tecido natural"
-                loading="lazy"
-                width={1408}
-                height={1008}
-                className="h-full w-full object-cover transition-transform duration-[1.4s] [transition-timing-function:var(--ease-soul)] hover:scale-105"
-              />
-            </div>
-          </motion.figure>
+        {/* Grade equilibrada com max-widths e respiro */}
+        <div className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-3 lg:gap-10">
+          {experiences.map((exp, i) => (
+            <Reveal key={exp.tag} delay={0.08 * i}>
+              <div className="group flex flex-col h-full rounded-xl border border-ink/10 bg-bone p-5 shadow-xs transition-shadow duration-500 hover:shadow-md">
+                <div className="aspect-4/3 w-full overflow-hidden rounded-lg bg-sand">
+                  <img
+                    src={exp.img}
+                    alt={exp.alt}
+                    loading="lazy"
+                    width={1408}
+                    height={1056}
+                    className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                  />
+                </div>
 
-          <motion.figure
-            className="col-span-10 md:col-span-5"
-            style={reduce ? {} : { y: yB }}
-          >
-            <div className="aspect-4/5 overflow-hidden md:aspect-3/4">
-              <img
-                src={hands}
-                alt="Detalhe das mãos do profissional durante o atendimento"
-                loading="lazy"
-                width={1408}
-                height={1760}
-                className="h-full w-full object-cover transition-transform duration-[1.4s] [transition-timing-function:var(--ease-soul)] hover:scale-105"
-              />
-            </div>
-            <figcaption className="mt-3 text-xs tracking-[0.16em] text-graphite uppercase">
-              Precisão — cada movimento explicado
-            </figcaption>
-          </motion.figure>
+                <div className="mt-5 flex flex-col flex-1 justify-between">
+                  <div>
+                    <span className="eyebrow text-sage-deep">{exp.tag}</span>
+                    <h3 className="mt-2 font-display text-2xl text-ink leading-snug">
+                      {exp.title}
+                    </h3>
+                    <p className="mt-3 text-xs leading-relaxed text-graphite">{exp.desc}</p>
+                  </div>
+                </div>
+              </div>
+            </Reveal>
+          ))}
         </div>
       </div>
     </section>

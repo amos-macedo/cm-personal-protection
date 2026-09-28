@@ -39,7 +39,15 @@ export function Footer() {
             >
               Instagram {site.instagramHandle}
             </a>
-            <span>{site.city}</span>
+            <a
+              href="#localizacao"
+              className="link-underline hover:link-underline-on w-fit text-sage"
+            >
+              {site.addressComplement}
+            </a>
+            <span>
+              {site.addressStreet} — {site.city}
+            </span>
           </div>
 
           <p className="text-xs leading-relaxed text-bone/40 md:text-right">

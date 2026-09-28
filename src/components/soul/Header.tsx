@@ -19,8 +19,13 @@ export function Header() {
 
   const onNav = (href: string) => {
     setOpen(false);
-    const el = document.querySelector(href);
-    el?.scrollIntoView({ behavior: "smooth", block: "start" });
+    document.body.style.overflow = "";
+    setTimeout(() => {
+      const el = document.querySelector(href);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }, 120);
   };
 
   return (
@@ -99,7 +104,7 @@ export function Header() {
       <AnimatePresence>
         {open && (
           <motion.div
-            className="fixed inset-0 z-[60] flex flex-col bg-petrol px-6 py-6 lg:hidden"
+            className="fixed inset-0 z-[60] flex flex-col justify-between overflow-y-auto bg-petrol px-6 py-8 lg:hidden"
             initial={{ clipPath: "inset(0 0 100% 0)" }}
             animate={{ clipPath: "inset(0 0 0% 0)" }}
             exit={{ clipPath: "inset(0 0 100% 0)" }}
@@ -116,15 +121,15 @@ export function Header() {
               </button>
             </div>
 
-            <nav aria-label="Navegação mobile" className="mt-auto mb-auto flex flex-col gap-2">
+            <nav aria-label="Navegação mobile" className="my-8 flex flex-col gap-1">
               {nav.map((item, i) => (
                 <motion.button
                   key={item.href}
                   onClick={() => onNav(item.href)}
                   initial={{ opacity: 0, y: 24 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.25 + i * 0.07, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                  className="border-b border-bone/12 py-4 text-left font-display text-4xl text-bone"
+                  transition={{ delay: 0.2 + i * 0.05, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                  className="border-b border-bone/12 py-3 text-left font-display text-2xl sm:text-3xl text-bone transition-colors hover:text-sage"
                 >
                   {item.label}
                 </motion.button>
@@ -135,7 +140,7 @@ export function Header() {
               href={whatsappUrl}
               target="_blank"
               rel="noreferrer noopener"
-              className="rounded-full bg-bone px-6 py-4 text-center text-[0.7rem] tracking-[0.2em] text-petrol uppercase"
+              className="rounded-full bg-bone px-6 py-4 text-center text-[0.7rem] tracking-[0.2em] text-petrol uppercase font-medium"
             >
               Agendar avaliação
             </a>

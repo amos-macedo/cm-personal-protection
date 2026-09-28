@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform, useReducedMotion } from "motion/react";
 import heroSmile from "@/assets/hero-smile.jpg";
+import { whatsappUrl } from "@/lib/site";
 import { MaskedLines } from "./motion-primitives";
 
 export function Hero() {
@@ -16,10 +17,7 @@ export function Hero() {
 
   return (
     <section ref={ref} id="top" className="relative h-[100svh] overflow-hidden bg-petrol">
-      <motion.div
-        className="absolute inset-0"
-        style={reduce ? {} : { scale, y: imageY }}
-      >
+      <motion.div className="absolute inset-0" style={reduce ? {} : { scale, y: imageY }}>
         <img
           src={heroSmile}
           alt="Retrato de uma paciente sorrindo com luz natural"
@@ -49,7 +47,7 @@ export function Hero() {
             Odontologia com propósito
           </motion.p>
 
-          <h1 className="mt-6 max-w-[16ch] font-display text-[clamp(2.9rem,8.6vw,8.5rem)] leading-[0.94] text-bone">
+          <h1 className="mt-4 sm:mt-6 max-w-[16ch] font-display text-[clamp(2.3rem,7.2vw,8.5rem)] leading-[0.96] text-bone">
             <MaskedLines
               delay={1.6}
               lines={[
@@ -62,7 +60,7 @@ export function Hero() {
           </h1>
 
           <motion.div
-            className="mt-10 flex flex-col gap-8 border-t border-bone/15 pt-8 md:flex-row md:items-end md:justify-between"
+            className="mt-8 sm:mt-10 flex flex-col gap-6 border-t border-bone/15 pt-6 sm:pt-8 md:flex-row md:items-end md:justify-between"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 2.1, ease: [0.16, 1, 0.3, 1] }}
@@ -71,15 +69,29 @@ export function Hero() {
               Cuidado, precisão e uma experiência pensada para você.
             </p>
 
-            <div className="flex flex-wrap items-center gap-6">
+            <div className="flex flex-wrap items-center gap-4">
+              <a
+                href={whatsappUrl}
+                target="_blank"
+                rel="noreferrer noopener"
+                className="group inline-flex items-center gap-3 rounded-full bg-sage px-6 py-3.5 text-[0.7rem] font-medium tracking-[0.2em] text-petrol uppercase transition-colors duration-500 hover:bg-bone hover:text-petrol"
+              >
+                Agendar avaliação
+                <span className="transition-transform duration-500 group-hover:translate-x-1">
+                  →
+                </span>
+              </a>
+
               <button
                 onClick={() =>
                   document.querySelector("#clinica")?.scrollIntoView({ behavior: "smooth" })
                 }
-                className="group inline-flex items-center gap-3 rounded-full border border-bone/50 px-7 py-3.5 text-[0.7rem] tracking-[0.2em] text-bone uppercase transition-colors duration-500 hover:bg-bone hover:text-petrol"
+                className="group inline-flex items-center gap-3 rounded-full border border-bone/50 px-6 py-3.5 text-[0.7rem] tracking-[0.2em] text-bone uppercase transition-colors duration-500 hover:bg-bone hover:text-petrol"
               >
-                Conhecer a Soul'Encanto
-                <span className="transition-transform duration-500 group-hover:translate-x-1.5">→</span>
+                Conhecer a clínica
+                <span className="transition-transform duration-500 group-hover:translate-x-1">
+                  ↓
+                </span>
               </button>
             </div>
           </motion.div>

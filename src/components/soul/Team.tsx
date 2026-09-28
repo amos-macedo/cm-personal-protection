@@ -22,17 +22,17 @@ const people = [
 
 export function Team() {
   return (
-    <section className="bg-sand py-[14vh]">
-      <div className="mx-auto max-w-[110rem] px-6 md:px-10">
-        <h2 className="font-display text-[clamp(2.2rem,5vw,4.8rem)] leading-[1] text-ink">
+    <section id="equipe" className="scroll-mt-24 bg-sand py-[12vh]">
+      <div className="mx-auto max-w-5xl px-6 md:px-10">
+        <h2 className="font-display text-[clamp(2.2rem,4vw,4rem)] leading-[1] text-ink">
           <MaskedLines lines={["Quem cuida de você."]} />
         </h2>
 
-        <div className="mt-16 grid gap-10 md:grid-cols-2">
+        <div className="mt-14 grid gap-10 md:grid-cols-2">
           {people.map((p, i) => (
             <Reveal key={p.name} delay={0.1 * i}>
-              <figure className="group">
-                <div className="aspect-4/5 overflow-hidden">
+              <figure className="group mx-auto w-full max-w-sm">
+                <div className="aspect-4/5 overflow-hidden rounded-xl border border-ink/10 bg-bone shadow-sm">
                   <img
                     src={p.img}
                     alt={p.alt}

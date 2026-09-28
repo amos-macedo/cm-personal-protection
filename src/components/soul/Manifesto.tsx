@@ -20,20 +20,20 @@ export function Manifesto() {
           className="flex flex-wrap items-center gap-x-6 gap-y-2 font-display text-[clamp(3rem,13vw,13rem)] leading-[0.88] text-ink"
         >
           <MaskedLines lines={["Sorrir é"]} />
-          <motion.span
-            className="relative inline-block h-[0.62em] w-[min(30vw,20rem)] overflow-hidden rounded-full"
-            style={reduce ? {} : { clipPath: clip }}
-          >
+          <span className="relative inline-flex items-center justify-center align-middle mx-2 md:mx-4 h-[0.82em] w-[clamp(5rem,18vw,15rem)] overflow-hidden rounded-full border border-ink/20 shadow-sm bg-sand">
             <motion.img
               src={lifestyle}
-              alt="Mulher sorrindo naturalmente na luz do fim de tarde"
+              alt="Mulher sorrindo com dentes naturais e bem cuidados"
               loading="lazy"
               width={1408}
               height={1760}
-              className="h-full w-full object-cover"
-              style={reduce ? {} : { y: imgY, scale: 1.25 }}
+              className="h-full w-full object-cover object-[center_32%]"
+              initial={{ scale: 1.15, opacity: 0.8 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
             />
-          </motion.span>
+          </span>
           <MaskedLines
             delay={0.1}
             lines={[

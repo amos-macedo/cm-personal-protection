@@ -18,15 +18,15 @@ export function Concept() {
   const smallY = useTransform(scrollYProgress, [0, 1], ["-14%", "14%"]);
 
   return (
-    <section ref={ref} id="clinica" className="relative scroll-mt-24 bg-bone py-[14vh]">
-      <div className="mx-auto max-w-[110rem] px-6 md:px-10">
+    <section ref={ref} id="clinica" className="relative scroll-mt-24 bg-bone py-[12vh]">
+      <div className="mx-auto max-w-7xl px-6 md:px-10">
         <Reveal>
           <p className="eyebrow text-sage-deep">Mais do que odontologia</p>
         </Reveal>
 
         <div className="mt-10 grid gap-x-16 gap-y-14 lg:grid-cols-12">
           <div className="relative lg:col-span-7">
-            <div className="aspect-4/5 overflow-hidden md:aspect-3/2 lg:aspect-4/5">
+            <div className="aspect-4/5 overflow-hidden rounded-xl border border-ink/10 shadow-md md:aspect-3/2 lg:aspect-4/5">
               <motion.img
                 src={consult}
                 alt="Dentista ouvindo uma paciente durante a avaliação"
@@ -39,7 +39,7 @@ export function Concept() {
             </div>
 
             <motion.div
-              className="absolute -right-4 -bottom-16 hidden w-44 overflow-hidden shadow-[var(--shadow-lift)] lg:block"
+              className="absolute -right-4 -bottom-16 hidden w-44 overflow-hidden rounded-lg border border-ink/10 shadow-[var(--shadow-lift)] lg:block"
               style={reduce ? {} : { y: smallY }}
             >
               <img

@@ -6,17 +6,16 @@ import { Header } from "@/components/soul/Header";
 import { Hero } from "@/components/soul/Hero";
 import { Manifesto } from "@/components/soul/Manifesto";
 import { Concept } from "@/components/soul/Concept";
-import { Storytelling } from "@/components/soul/Storytelling";
 import { Treatments } from "@/components/soul/Treatments";
-import { Featured } from "@/components/soul/Featured";
 import { BeforeAfter } from "@/components/soul/BeforeAfter";
+import { Featured } from "@/components/soul/Featured";
 import { Experience } from "@/components/soul/Experience";
-import { Testimonials } from "@/components/soul/Testimonials";
 import { Team } from "@/components/soul/Team";
 import { Numbers } from "@/components/soul/Numbers";
+import { Testimonials } from "@/components/soul/Testimonials";
+import { LocationMap } from "@/components/soul/LocationMap";
 import { Faq } from "@/components/soul/Faq";
 import { FinalCta } from "@/components/soul/FinalCta";
-import { Contact } from "@/components/soul/Contact";
 import { Footer } from "@/components/soul/Footer";
 import { FloatingWhatsapp } from "@/components/soul/FloatingWhatsapp";
 
@@ -46,20 +45,44 @@ function Index() {
       <Cursor />
       <Header />
       <main>
+        {/* 1. Hero — Acolhimento e CTA imediato */}
         <Hero />
+
+        {/* 2. Manifesto — Transição poética ("Sorrir é pessoal") */}
         <Manifesto />
+
+        {/* 3. A Clínica / Conceito — Filosofia da escuta e precisão biológica */}
         <Concept />
-        <Storytelling />
+
+        {/* 4. Especialidades — Accordion Horizontal Interativo */}
         <Treatments />
-        <Featured />
+
+        {/* 5. Transformações — Casos Clínicos Antes & Depois com revelação interativa */}
         <BeforeAfter />
+
+        {/* 6. Destaque Estético — Filosofia de preservação e mockups */}
+        <Featured />
+
+        {/* 7. Experiência — Conhecer os consultórios e espaços da clínica */}
         <Experience />
-        <Testimonials />
+
+        {/* 8. Equipe — Os cirurgiões-dentistas especialistas */}
         <Team />
+
+        {/* 9. Números — Autoridade e métricas comprovadas */}
         <Numbers />
+
+        {/* 10. Depoimentos — Prova social enriquecida com fotos e estrelas do Google */}
+        <Testimonials />
+
+        {/* 11. Localização — Mapa interativo no Heron Marinho, acessos e horários */}
+        <LocationMap />
+
+        {/* 12. Dúvidas Frequentes — Quebra de objeções pré-agendamento */}
         <Faq />
+
+        {/* 13. Chamada Final — Convite definitivo para transformação com WhatsApp */}
         <FinalCta />
-        <Contact />
       </main>
       <Footer />
       <FloatingWhatsapp />
