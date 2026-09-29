@@ -50,8 +50,8 @@ export function createSiteConfig(client: ClientData): SiteConfig {
     cityState: client.address.cityState,
     cep: client.address.cep,
     fullAddress: client.address.full,
-    hoursWeekday: client.hoursWeekday,
-    hoursWeekend: client.hoursWeekend,
+    hoursWeekday: client.hoursWeekday || "Segunda a Sexta: 08h às 18h",
+    hoursWeekend: client.hoursWeekend || "Sábado: Sob agendamento",
     rating: client.rating,
     reviews: client.reviews,
     googleMapsDirectionsUrl:
