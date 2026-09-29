@@ -79,13 +79,7 @@ export const ClientContext = createContext<ClientContextValue>({
   whatsappUrl: defaultSite.whatsappUrl,
 });
 
-export function ClientProvider({
-  client,
-  children,
-}: {
-  client: ClientData;
-  children: ReactNode;
-}) {
+export function ClientProvider({ client, children }: { client: ClientData; children: ReactNode }) {
   const site = createSiteConfig(client);
 
   return (
