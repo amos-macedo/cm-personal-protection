@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import { site } from "@/lib/site";
+import { useClient } from "@/lib/site";
 
 export function Loader() {
+  const { site } = useClient();
   const reduce = useReducedMotion();
   const [done, setDone] = useState(false);
 

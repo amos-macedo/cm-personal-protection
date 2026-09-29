@@ -77,18 +77,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Soul'Encanto — Consultório Odontológico em Campina Grande" },
+      { title: "Consultório Odontológico | Odontologia com Propósito" },
       {
         name: "description",
         content:
-          "Odontologia de excelência com propósito em Campina Grande - PB. Estética dental, implantes, facetas, ortodontia e uma experiência acolhedora e personalizada.",
+          "Odontologia de excelência com propósito. Estética dental, implantes, facetas, ortodontia e uma experiência acolhedora e personalizada.",
       },
       { name: "theme-color", content: "#1e2b2e" },
-      { property: "og:title", content: "Soul'Encanto — Consultório Odontológico" },
+      { property: "og:title", content: "Consultório Odontológico" },
       {
         property: "og:description",
         content:
-          "Odontologia de excelência com propósito em Campina Grande - PB. Estética dental, implantes, facetas e ortodontia.",
+          "Odontologia de excelência com propósito. Estética dental, implantes, facetas e ortodontia.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

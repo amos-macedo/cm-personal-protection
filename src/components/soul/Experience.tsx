@@ -1,6 +1,7 @@
 import reception from "@/assets/clinic-reception.jpg";
 import chair from "@/assets/clinic-chair.jpg";
 import materials from "@/assets/materials.jpg";
+import { useClient } from "@/lib/site";
 import { MaskedLines, Reveal } from "./motion-primitives";
 
 const experiences = [
@@ -28,13 +29,14 @@ const experiences = [
 ];
 
 export function Experience() {
+  const { site } = useClient();
   return (
     <section id="experiencia" className="scroll-mt-24 bg-sand py-[12vh]">
       <div className="mx-auto max-w-7xl px-6 md:px-10">
         <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div>
             <Reveal>
-              <p className="eyebrow text-sage-deep">Experiência Soul'Encanto</p>
+              <p className="eyebrow text-sage-deep">Experiência {site.name}</p>
             </Reveal>
             <h2 className="mt-3 max-w-[18ch] font-display text-[clamp(2.2rem,4.4vw,4.5rem)] leading-[1.02] text-ink">
               <MaskedLines lines={["A diferença está", "em cada detalhe."]} />
@@ -53,8 +55,8 @@ export function Experience() {
         <div className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-3 lg:gap-10">
           {experiences.map((exp, i) => (
             <Reveal key={exp.tag} delay={0.08 * i}>
-              <div className="group flex flex-col h-full rounded-xl border border-ink/10 bg-bone p-5 shadow-xs transition-shadow duration-500 hover:shadow-md">
-                <div className="aspect-4/3 w-full overflow-hidden rounded-lg bg-sand">
+              <div className="group flex flex-col h-full overflow-hidden rounded-xl border border-ink/10 bg-bone shadow-xs transition-shadow duration-500 hover:shadow-md">
+                <div className="aspect-4/3 w-full overflow-hidden rounded-t-xl bg-sand">
                   <img
                     src={exp.img}
                     alt={exp.alt}
@@ -65,7 +67,7 @@ export function Experience() {
                   />
                 </div>
 
-                <div className="mt-5 flex flex-col flex-1 justify-between">
+                <div className="flex flex-col flex-1 justify-between p-6">
                   <div>
                     <span className="eyebrow text-sage-deep">{exp.tag}</span>
                     <h3 className="mt-2 font-display text-2xl text-ink leading-snug">

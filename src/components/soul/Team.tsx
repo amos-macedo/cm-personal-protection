@@ -31,8 +31,8 @@ export function Team() {
         <div className="mt-14 grid gap-10 md:grid-cols-2">
           {people.map((p, i) => (
             <Reveal key={p.name} delay={0.1 * i}>
-              <figure className="group mx-auto w-full max-w-sm">
-                <div className="aspect-4/5 overflow-hidden rounded-xl border border-ink/10 bg-bone shadow-sm">
+              <figure className="group mx-auto w-full max-w-sm overflow-hidden rounded-xl border border-ink/10 bg-bone shadow-xs transition-shadow duration-500 hover:shadow-md">
+                <div className="aspect-4/5 w-full overflow-hidden rounded-t-xl bg-sand">
                   <img
                     src={p.img}
                     alt={p.alt}
@@ -42,7 +42,7 @@ export function Team() {
                     className="h-full w-full object-cover grayscale-[0.25] transition-all duration-[1.3s] [transition-timing-function:var(--ease-soul)] group-hover:scale-105 group-hover:grayscale-0"
                   />
                 </div>
-                <figcaption className="mt-5 flex items-end justify-between border-t border-ink/12 pt-4">
+                <figcaption className="flex items-end justify-between p-6">
                   <div>
                     <p className="font-display text-2xl text-ink">{p.name}</p>
                     <p className="mt-1 text-sm text-graphite">{p.role}</p>

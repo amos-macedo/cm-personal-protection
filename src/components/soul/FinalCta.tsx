@@ -1,11 +1,12 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform, useReducedMotion } from "motion/react";
 import ctaDark from "@/assets/cta-dark.jpg";
-import { site, whatsappUrl } from "@/lib/site";
+import { useClient } from "@/lib/site";
 import { MaskedLines, Reveal } from "./motion-primitives";
 import { SoulButton } from "./SoulButton";
 
 export function FinalCta() {
+  const { site, whatsappUrl } = useClient();
   const ref = useRef<HTMLElement>(null);
   const reduce = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
@@ -49,7 +50,7 @@ export function FinalCta() {
 
             <Reveal delay={0.12}>
               <p className="mt-8 max-w-lg leading-relaxed text-bone/70 text-base">
-                Converse com a Soul'Encanto e descubra como podemos cuidar do seu sorriso com
+                Converse com a {site.name} e descubra como podemos cuidar do seu sorriso com
                 escuta, precisão e naturalidade.
               </p>
             </Reveal>

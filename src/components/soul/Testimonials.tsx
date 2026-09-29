@@ -1,9 +1,9 @@
-import { site } from "@/lib/site";
+import { useClient } from "@/lib/site";
 import { MaskedLines, Reveal } from "./motion-primitives";
-import avatar1 from "@/assets/fotos-odonto/pexels-eceebrarr-15225509.jpg";
-import avatar2 from "@/assets/fotos-odonto/pexels-cedric-fauntleroy-4269264.jpg";
+import avatar1 from "@/assets/avatar-1.jpg";
+import avatar2 from "@/assets/avatar-2.jpg";
 import avatar3 from "@/assets/lifestyle-laugh.jpg";
-import avatar4 from "@/assets/fotos-odonto/pexels-arda-kaykisiz-672105204-19879741.jpg";
+import avatar4 from "@/assets/avatar-4.jpg";
 
 interface Testimonial {
   name: string;
@@ -22,7 +22,7 @@ const reviews: Testimonial[] = [
     treatment: "Lentes de Contato em Porcelana",
     avatar: avatar1,
     rating: 5,
-    text: "Eu tinha muito receio de o resultado ficar artificial, mas a equipe da Soul'Encanto me surpreendeu. O teste prévio (mockup) me deu total segurança antes de começar. Meu sorriso ficou natural, iluminado e proporcional ao meu rosto.",
+    text: "Eu tinha muito receio de o resultado ficar artificial, mas a equipe da clínica me surpreendeu. O teste prévio (mockup) me deu total segurança antes de começar. Meu sorriso ficou natural, iluminado e proporcional ao meu rosto.",
     date: "Há 2 semanas",
   },
   {
@@ -40,7 +40,7 @@ const reviews: Testimonial[] = [
     treatment: "Clareamento Clínico & Profilaxia",
     avatar: avatar3,
     rating: 5,
-    text: "Sempre tive sensibilidade severa em clareamentos anteriores. Na Soul'Encanto o protocolo biológico foi tão suave que não senti dor alguma, e meus dentes clarearam mais de 5 tons. O pós-atendimento é impecável.",
+    text: "Sempre tive sensibilidade severa em clareamentos anteriores. Aqui o protocolo biológico foi tão suave que não senti dor alguma, e meus dentes clarearam mais de 5 tons. O pós-atendimento é impecável.",
     date: "Há 1 mês",
   },
   {
@@ -49,12 +49,13 @@ const reviews: Testimonial[] = [
     treatment: "Implante Dentário & Reabilitação",
     avatar: avatar4,
     rating: 5,
-    text: "Excelente localização no Heron Marinho com estacionamento fácil. O procedimento cirúrgico guiado por computador foi super rápido, sem inchaço no pós-operatório e devolveu totalmente a minha mastigação.",
+    text: "Excelente localização com estacionamento fácil. O procedimento cirúrgico guiado por computador foi super rápido, sem inchaço no pós-operatório e devolveu totalmente a minha mastigação.",
     date: "Há 1 mês",
   },
 ];
 
 export function Testimonials() {
+  const { site } = useClient();
   return (
     <section id="depoimentos" className="scroll-mt-24 bg-sand py-[12vh]">
       <div className="mx-auto max-w-7xl px-6 md:px-10">

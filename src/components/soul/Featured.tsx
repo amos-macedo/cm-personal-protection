@@ -1,11 +1,12 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform, useReducedMotion } from "motion/react";
 import afterImg from "@/assets/after.jpg";
-import { whatsappUrl } from "@/lib/site";
+import { useClient } from "@/lib/site";
 import { MaskedLines, Reveal } from "./motion-primitives";
 import { SoulButton } from "./SoulButton";
 
 export function Featured() {
+  const { whatsappUrl } = useClient();
   return (
     <section id="destaque" className="scroll-mt-24 bg-clay py-[12vh]">
       <div className="mx-auto max-w-7xl px-6 md:px-10">

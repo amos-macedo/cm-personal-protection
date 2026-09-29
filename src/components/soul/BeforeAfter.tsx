@@ -1,15 +1,15 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import beforeImg from "@/assets/before.jpg";
 import afterImg from "@/assets/after.jpg";
-import facetasBefore from "@/assets/facetas-before.jpg";
-import facetasAfter from "@/assets/facetas-after.jpg";
+import diastemaBefore from "@/assets/diastema-before.jpg";
+import diastemaAfter from "@/assets/diastema-after.jpg";
 import ortoBefore from "@/assets/orto-before.jpg";
 import ortoAfter from "@/assets/orto-after.jpg";
 import clareamentoBefore from "@/assets/clareamento-before.jpg";
 import clareamentoAfter from "@/assets/clareamento-after.jpg";
 import { MaskedLines, Reveal } from "./motion-primitives";
 import { SoulButton } from "./SoulButton";
-import { whatsappUrl } from "@/lib/site";
+import { useClient } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 interface CaseItem {
@@ -26,40 +26,40 @@ interface CaseItem {
 const allCases: CaseItem[] = [
   {
     id: "lentes-01",
-    category: "Lentes & Facetas",
-    title: "Harmonização de Proporção e Fechamento de Diastemas",
-    complaint: "Espaçamentos visíveis entre os dentes e bordas desgastadas.",
-    solution: "Facetas cerâmicas ultrafinas com mimetismo óptico de esmalte natural.",
+    category: "Lentes de Contato Dental",
+    title: "Transformação do Sorriso com Lentes de Porcelana",
+    complaint: "Dentes desgastados nas bordas, perda de luminosidade e formato envelhecido.",
+    solution: "Lentes de porcelana ultrafinas com preservação biológica máxima e brilho natural.",
     duration: "3 sessões clínicas",
     before: beforeImg,
     after: afterImg,
   },
   {
-    id: "facetas-02",
-    category: "Estética Cerâmica",
-    title: "Reabilitação Estética com Textura Natural",
-    complaint: "Dentes escurecidos e assimetria acentuada no arco superior.",
-    solution: "Lentes de porcelana feldspática de alta luminosidade e contorno gengival.",
-    duration: "4 sessões clínicas",
-    before: facetasBefore,
-    after: facetasAfter,
+    id: "diastemas-02",
+    category: "Fechamento de Diastemas",
+    title: "Harmonização de Proporção e Fechamento de Diastemas",
+    complaint: "Espaçamentos visíveis entre os incisivos com bordas desgastadas e irregulares.",
+    solution: "Facetas cerâmicas ultrafinas fechando os espaços com mimetismo óptico de esmalte natural.",
+    duration: "2 sessões clínicas",
+    before: diastemaBefore,
+    after: diastemaAfter,
   },
   {
-    id: "ortodontia",
+    id: "ortodontia-03",
     category: "Ortodontia Estética",
     title: "Correção de Alinhamento e Oclusão",
-    complaint: "Apinhamento severo e desvio da linha média do sorriso.",
-    solution: "Alinhamento ortodôntico guiado, preservando a harmonia facial.",
-    duration: "10 meses de acompanhamento",
+    complaint: "Espaçamentos e dentes desalinhados com desarmonia na mordida.",
+    solution: "Alinhamento e nivelamento ortodôntico restabelecendo a oclusão e simetria do arco.",
+    duration: "Acompanhamento ortodôntico guiado",
     before: ortoBefore,
     after: ortoAfter,
   },
   {
-    id: "clareamento",
+    id: "clareamento-04",
     category: "Clareamento Clínico",
     title: "Clareamento Profissional com Zero Sensibilidade",
-    complaint: "Manchas profundas causadas por café e envelhecimento do esmalte.",
-    solution: "Protocolo biológico associando laser em consultório e moldeira personalizada.",
+    complaint: "Escurecimento por hábitos alimentares e perda da luminosidade branca original.",
+    solution: "Protocolo biológico combinando clareamento fotoativado em consultório e moldeira personalizada.",
     duration: "2 sessões em consultório + 14 dias caseiro",
     before: clareamentoBefore,
     after: clareamentoAfter,
@@ -87,6 +87,7 @@ function InteractiveCompareCard({
   aspectRatio?: string;
   showBadges?: boolean;
 }) {
+  const { whatsappUrl } = useClient();
   const [pos, setPos] = useState(50);
   const containerRef = useRef<HTMLDivElement>(null);
   const isDragging = useRef(false);
@@ -100,7 +101,7 @@ function InteractiveCompareCard({
   }, []);
 
   return (
-    <div className="flex flex-col h-full rounded-xl border border-ink/10 bg-sand p-4 shadow-xs transition-shadow duration-500 hover:shadow-md">
+    <div className="flex flex-col h-full overflow-hidden rounded-xl border border-ink/10 bg-sand shadow-xs transition-shadow duration-500 hover:shadow-md">
       <div
         ref={containerRef}
         onMouseMove={(e) => updatePosition(e.clientX)}
@@ -114,7 +115,7 @@ function InteractiveCompareCard({
           if (e.touches[0]) updatePosition(e.touches[0].clientX);
         }}
         className={cn(
-          "relative w-full cursor-ew-resize overflow-hidden rounded-lg bg-bone select-none touch-none",
+          "relative w-full cursor-ew-resize overflow-hidden rounded-t-xl bg-bone select-none touch-none",
           aspectRatio,
         )}
       >
@@ -170,14 +171,14 @@ function InteractiveCompareCard({
       </div>
 
       {(tag || title || desc) && (
-        <div className="mt-4 flex flex-1 flex-col justify-between">
+        <div className="flex flex-1 flex-col justify-between p-6">
           <div>
             {tag && <span className="eyebrow text-sage-deep">{tag}</span>}
             <h4 className="mt-1 font-display text-xl text-ink leading-snug">{title}</h4>
             {desc && <p className="mt-2 text-xs leading-relaxed text-graphite">{desc}</p>}
           </div>
 
-          <div className="mt-4 border-t border-ink/10 pt-3">
+          <div className="mt-5 border-t border-ink/10 pt-4">
             <a
               href={whatsappUrl}
               target="_blank"
@@ -194,6 +195,7 @@ function InteractiveCompareCard({
 }
 
 export function BeforeAfter() {
+  const { whatsappUrl } = useClient();
   const [selectedCase, setSelectedCase] = useState<number>(0);
   const [pos, setPos] = useState(50);
   const wrapRef = useRef<HTMLDivElement>(null);

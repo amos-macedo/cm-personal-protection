@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "motion/react";
-import { whatsappUrl } from "@/lib/site";
+import { useClient } from "@/lib/site";
 
 export function FloatingWhatsapp() {
+  const { site, whatsappUrl } = useClient();
   const [show, setShow] = useState(false);
   const { scrollY } = useScroll();
   useMotionValueEvent(scrollY, "change", (v) => setShow(v > 900));
@@ -14,7 +15,7 @@ export function FloatingWhatsapp() {
           href={whatsappUrl}
           target="_blank"
           rel="noreferrer noopener"
-          aria-label="Falar no WhatsApp com a Soul'Encanto"
+          aria-label={`Falar no WhatsApp com ${site.name}`}
           initial={{ opacity: 0, y: 20, scale: 0.9 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 20, scale: 0.9 }}

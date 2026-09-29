@@ -1,38 +1,39 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import { site } from "@/lib/site";
+import { useClient } from "@/lib/site";
 import { MaskedLines, Reveal } from "./motion-primitives";
 import { cn } from "@/lib/utils";
 
-const faqs = [
-  {
-    q: "Como funciona a primeira consulta?",
-    a: "É uma conversa antes de qualquer procedimento: entendemos sua queixa, avaliamos clinicamente e apresentamos as possibilidades com valores e etapas.",
-  },
-  {
-    q: "Quais tratamentos são realizados?",
-    a: "Estética dental, clareamento, facetas, lentes de contato dental, implantes, ortodontia, prótese e clínica geral.",
-  },
-  {
-    q: "A clínica atende crianças?",
-    a: "Sim. O atendimento infantil é feito com tempo e linguagem próprios, respeitando o ritmo de cada criança.",
-  },
-  {
-    q: "Quais formas de pagamento estão disponíveis?",
-    a: "Dinheiro, PIX, cartões de débito e crédito, com opções de parcelamento conforme o plano de tratamento. (Confirmar condições atuais.)",
-  },
-  {
-    q: "Como faço para agendar?",
-    a: `Pelo WhatsApp ${site.phoneDisplay}. Respondemos em horário comercial e confirmamos o melhor horário para você.`,
-  },
-  {
-    q: "Onde a clínica está localizada?",
-    a: `Estamos no Complexo Heron Marinho (Torre B, Sala 608), no bairro do Catolé em Campina Grande - PB. O complexo dispõe de estacionamento e acessibilidade total. Você pode conferir o mapa interativo na seção de localização do site.`,
-  },
-];
-
 export function Faq() {
+  const { site } = useClient();
   const [open, setOpen] = useState<number | null>(null);
+
+  const faqs = [
+    {
+      q: "Como funciona a primeira consulta?",
+      a: "É uma conversa antes de qualquer procedimento: entendemos sua queixa, avaliamos clinicamente e apresentamos as possibilidades com valores e etapas.",
+    },
+    {
+      q: "Quais tratamentos são realizados?",
+      a: "Estética dental, clareamento, facetas, lentes de contato dental, implantes, ortodontia, prótese e clínica geral.",
+    },
+    {
+      q: "A clínica atende crianças?",
+      a: "Sim. O atendimento infantil é feito com tempo e linguagem próprios, respeitando o ritmo de cada criança.",
+    },
+    {
+      q: "Quais formas de pagamento estão disponíveis?",
+      a: "Dinheiro, PIX, cartões de débito e crédito, com opções de parcelamento conforme o plano de tratamento. (Confirmar condições atuais.)",
+    },
+    {
+      q: "Como faço para agendar?",
+      a: `Pelo WhatsApp ${site.phoneDisplay}. Respondemos em horário comercial e confirmamos o melhor horário para você.`,
+    },
+    {
+      q: "Onde a clínica está localizada?",
+      a: `Estamos em ${site.addressComplement}, ${site.addressStreet} (${site.neighborhood}) em ${site.cityState}. Dispomos de estacionamento e acessibilidade. Você pode conferir o mapa interativo na seção de localização do site.`,
+    },
+  ];
 
   return (
     <section id="faq" className="scroll-mt-24 bg-bone py-[12vh]">

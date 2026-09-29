@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { site, whatsappUrl } from "@/lib/site";
+import { useClient } from "@/lib/site";
 import { MaskedLines, Reveal } from "./motion-primitives";
 import { SoulButton } from "./SoulButton";
 
 export function LocationMap() {
+  const { site, whatsappUrl } = useClient();
   const [mapLoaded, setMapLoaded] = useState(false);
 
   return (
@@ -15,13 +16,13 @@ export function LocationMap() {
               <p className="eyebrow text-sage-deep">Localização privilegiada</p>
             </Reveal>
             <h2 className="mt-4 font-display text-[clamp(2.4rem,6vw,5.5rem)] leading-[0.98] text-ink">
-              <MaskedLines lines={["Fácil acesso no", "coração de Campina Grande."]} />
+              <MaskedLines lines={["Fácil acesso em", `${site.city}.`]} />
             </h2>
           </div>
 
           <Reveal delay={0.12}>
             <p className="max-w-sm text-sm leading-relaxed text-graphite">
-              Instalada no Complexo Heron Marinho, com estrutura moderna, estacionamento privativo e
+              Estrutura moderna em {site.neighborhood}, com estacionamento privativo e
               total acessibilidade para receber você com excelência.
             </p>
           </Reveal>
@@ -50,11 +51,11 @@ export function LocationMap() {
                 <ul className="mt-3 space-y-2 text-sm text-graphite">
                   <li className="flex items-center justify-between">
                     <span>Segunda a Sexta</span>
-                    <span className="font-medium text-ink">08h às 19h</span>
+                    <span className="font-medium text-ink">{site.hoursWeekday}</span>
                   </li>
                   <li className="flex items-center justify-between">
                     <span>Sábado</span>
-                    <span className="font-medium text-ink">08h às 12h</span>
+                    <span className="font-medium text-ink">{site.hoursWeekend}</span>
                   </li>
                   <li className="flex items-center justify-between text-graphite/60">
                     <span>Domingo e Feriados</span>
@@ -118,7 +119,7 @@ export function LocationMap() {
 
             <iframe
               src={site.googleMapsEmbedUrl}
-              title="Localização da clínica Soul'Encanto no Google Maps"
+              title={`Localização de ${site.name} no Google Maps`}
               width="100%"
               height="100%"
               className="h-full min-h-[380px] w-full border-0 lg:min-h-[520px]"

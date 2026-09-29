@@ -1,6 +1,7 @@
-import { nav, site, whatsappUrl } from "@/lib/site";
+import { nav, useClient } from "@/lib/site";
 
 export function Footer() {
+  const { site, whatsappUrl } = useClient();
   return (
     <footer className="bg-petrol pt-[10vh] pb-10">
       <div className="mx-auto max-w-[110rem] px-6 md:px-10">

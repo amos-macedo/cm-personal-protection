@@ -2,6 +2,7 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform, useReducedMotion } from "motion/react";
 import consult from "@/assets/consult.jpg";
 import materials from "@/assets/materials.jpg";
+import { useClient } from "@/lib/site";
 import { MaskedLines, Reveal } from "./motion-primitives";
 
 const pillars = [
@@ -11,6 +12,7 @@ const pillars = [
 ];
 
 export function Concept() {
+  const { site } = useClient();
   const ref = useRef<HTMLElement>(null);
   const reduce = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
@@ -60,7 +62,7 @@ export function Concept() {
 
             <Reveal delay={0.1}>
               <p className="mt-8 max-w-md leading-relaxed text-graphite">
-                Na Soul'Encanto, cada detalhe da experiência importa. Do primeiro contato ao
+                Na {site.name}, cada detalhe da experiência importa. Do primeiro contato ao
                 acompanhamento do tratamento, buscamos tornar o cuidado odontológico mais próximo,
                 confortável e personalizado.
               </p>

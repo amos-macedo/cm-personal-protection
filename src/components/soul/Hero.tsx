@@ -1,10 +1,11 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform, useReducedMotion } from "motion/react";
 import heroSmile from "@/assets/hero-smile.jpg";
-import { whatsappUrl } from "@/lib/site";
+import { useClient } from "@/lib/site";
 import { MaskedLines } from "./motion-primitives";
 
 export function Hero() {
+  const { whatsappUrl } = useClient();
   const ref = useRef<HTMLElement>(null);
   const reduce = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });

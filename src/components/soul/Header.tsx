@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useScroll, useMotionValueEvent } from "motion/react";
-import { nav, site, whatsappUrl } from "@/lib/site";
+import { nav, useClient } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 export function Header() {
+  const { site, whatsappUrl } = useClient();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const { scrollY } = useScroll();

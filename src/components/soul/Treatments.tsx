@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { cn } from "@/lib/utils";
+import { useClient } from "@/lib/site";
 import { Reveal, MaskedLines } from "./motion-primitives";
-import { whatsappUrl } from "@/lib/site";
 import afterImg from "@/assets/after.jpg";
 import materials from "@/assets/materials.jpg";
 import hands from "@/assets/hands-detail.jpg";
@@ -94,6 +94,7 @@ const treatments: Treatment[] = [
 ];
 
 export function Treatments() {
+  const { site, whatsappUrl } = useClient();
   const [active, setActive] = useState<number>(0);
 
   return (
@@ -174,7 +175,7 @@ export function Treatments() {
                         {String(i + 1).padStart(2, "0")} — {t.shortTag}
                       </span>
                       <span className="text-xs text-bone/50 tracking-widest uppercase">
-                        Soul'Encanto
+                        {site.name}
                       </span>
                     </div>
 
