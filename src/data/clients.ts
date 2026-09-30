@@ -913,6 +913,96 @@ export const clients: Record<string, ClientData> = {
       ink: "oklch(0.205 0.01 250)",
     },
   },
+
+  "Campina Odontologia — Dra. Daiany Catão": {
+    slug: "campina-odontologia-dra-daiany-catao",
+    name: "Campina Odontologia — Dra. Daiany Catão",
+    tagline: "Clínica Odontológica",
+    title: "Campina Odontologia — Dra. Daiany Catão em Campina Grande",
+    description:
+      "Atendimento odontológico em Campina Grande - PB, com atuação em diferentes áreas da odontologia.",
+    logo: "/logo.svg",
+    phone: "(83) 98666-1477",
+    phoneDisplay: "(83) 98666-1477",
+    whatsapp: "5583986661477",
+    whatsappMessage:
+      "Olá! Gostaria de conhecer a Campina Odontologia e agendar uma avaliação.",
+    instagram: "",
+    instagramUrl: "",
+    address: {
+      street: "Rua Rui Barbosa, 154",
+      neighborhood: "Centro",
+      city: "Campina Grande",
+      state: "PB",
+      cityState: "Campina Grande — PB",
+      cep: "58400-070",
+      full: "Rua Rui Barbosa, 154 — Centro, Campina Grande - PB, CEP: 58400-070",
+    },
+    hoursWeekday: "Segunda a Sexta: 08h às 18h",
+    hoursWeekend: "Sábado: 08h às 12h",
+    rating: "4,9",
+    reviews: "97 avaliações",
+    googleMapsDirectionsUrl:
+      "https://www.google.com/maps/dir/?api=1&destination=Rua+Rui+Barbosa,+154,+Centro,+Campina+Grande+-+PB,+58400-070",
+    googleMapsEmbedUrl:
+      "https://maps.google.com/maps?q=Rua+Rui+Barbosa,+154,+Centro,+Campina+Grande+-+PB,+58400-070&t=&z=16&ie=UTF8&iwloc=&output=embed",
+    colors: {
+      petrol: "oklch(0.258 0.039 212)",
+      petrolSoft: "oklch(0.355 0.042 210)",
+      sage: "oklch(0.795 0.031 148)",
+      sageDeep: "oklch(0.545 0.043 152)",
+      bone: "oklch(0.973 0.008 85)",
+      sand: "oklch(0.928 0.018 82)",
+      clay: "oklch(0.868 0.026 78)",
+      graphite: "oklch(0.39 0.008 260)",
+      ink: "oklch(0.205 0.01 250)",
+    },
+  },
+
+  "Vitor Damásio — Odontologia": {
+    slug: "vitor-damasio-odontologia",
+    name: "Vitor Damásio — Odontologia",
+    tagline: "Clínica Odontológica",
+    title: "Vitor Damásio — Odontologia em Patos",
+    description:
+      "Atendimento odontológico em Patos - PB.",
+    logo: "/logo.svg",
+    phone: "(83) 99697-0613",
+    phoneDisplay: "(83) 99697-0613",
+    whatsapp: "5583996970613",
+    whatsappMessage:
+      "Olá! Gostaria de conhecer o trabalho do Vitor Damásio e agendar uma avaliação.",
+    instagram: "",
+    instagramUrl: "",
+    address: {
+      street: "Rua Bossuet Wanderley, 275",
+      neighborhood: "Centro",
+      city: "Patos",
+      state: "PB",
+      cityState: "Patos — PB",
+      cep: "58700-085",
+      full: "Rua Bossuet Wanderley, 275 — Centro, Patos - PB, CEP: 58700-085",
+    },
+    hoursWeekday: "",
+    hoursWeekend: "",
+    rating: "",
+    reviews: "",
+    googleMapsDirectionsUrl:
+      "https://www.google.com/maps/dir/?api=1&destination=Rua+Bossuet+Wanderley,+275,+Centro,+Patos+-+PB,+58700-085",
+    googleMapsEmbedUrl:
+      "https://maps.google.com/maps?q=Rua+Bossuet+Wanderley,+275,+Centro,+Patos+-+PB,+58700-085&t=&z=16&ie=UTF8&iwloc=&output=embed",
+    colors: {
+      petrol: "oklch(0.258 0.039 212)",
+      petrolSoft: "oklch(0.355 0.042 210)",
+      sage: "oklch(0.795 0.031 148)",
+      sageDeep: "oklch(0.545 0.043 152)",
+      bone: "oklch(0.973 0.008 85)",
+      sand: "oklch(0.928 0.018 82)",
+      clay: "oklch(0.868 0.026 78)",
+      graphite: "oklch(0.39 0.008 260)",
+      ink: "oklch(0.205 0.01 250)",
+    },
+  },
 };
 
 export const defaultClient: ClientData = clients["soulencanto"]!;
