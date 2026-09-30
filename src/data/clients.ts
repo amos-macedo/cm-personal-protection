@@ -1003,6 +1003,51 @@ export const clients: Record<string, ClientData> = {
       ink: "oklch(0.205 0.01 250)",
     },
   },
+
+  "Consultório Odontológico Mais Saúde": {
+    slug: "consultorio-odontologico-mais-saude",
+    name: "Consultório Odontológico Mais Saúde",
+    tagline: "Saúde Odontologia",
+    title: "Consultório Odontológico Mais Saúde — João Pessoa",
+    description:
+      "Atendimento odontológico em João Pessoa - PB, com serviços de dentística, ortodontia, cirurgia e atendimento de urgência.",
+    logo: "/logo.svg",
+    phone: "(83) 98853-6667",
+    phoneDisplay: "(83) 98853-6667",
+    whatsapp: "5583988536667",
+    whatsappMessage:
+      "Olá! Gostaria de conhecer o Consultório Odontológico Mais Saúde e agendar uma avaliação.",
+    instagram: "",
+    instagramUrl: "",
+    address: {
+      street: "Rua Deputado Petrônio Figueiredo, 554",
+      neighborhood: "Ernesto Geisel",
+      city: "João Pessoa",
+      state: "PB",
+      cityState: "João Pessoa — PB",
+      cep: "58075-410",
+      full: "Rua Deputado Petrônio Figueiredo, 554 — Ernesto Geisel, João Pessoa - PB, CEP: 58075-410",
+    },
+    hoursWeekday: "Segunda a Sexta: 08h às 12h e 13h às 17h",
+    hoursWeekend: "Sábado: 08h às 12h",
+    rating: "",
+    reviews: "",
+    googleMapsDirectionsUrl:
+      "https://www.google.com/maps/dir/?api=1&destination=Rua+Deputado+Petronio+Figueiredo,+554,+Ernesto+Geisel,+Joao+Pessoa+-+PB,+58075-410",
+    googleMapsEmbedUrl:
+      "https://maps.google.com/maps?q=Rua+Deputado+Petronio+Figueiredo,+554,+Ernesto+Geisel,+Joao+Pessoa+-+PB,+58075-410&t=&z=16&ie=UTF8&iwloc=&output=embed",
+    colors: {
+      petrol: "oklch(0.258 0.039 212)",
+      petrolSoft: "oklch(0.355 0.042 210)",
+      sage: "oklch(0.795 0.031 148)",
+      sageDeep: "oklch(0.545 0.043 152)",
+      bone: "oklch(0.973 0.008 85)",
+      sand: "oklch(0.928 0.018 82)",
+      clay: "oklch(0.868 0.026 78)",
+      graphite: "oklch(0.39 0.008 260)",
+      ink: "oklch(0.205 0.01 250)",
+    },
+  },
 };
 
 export const defaultClient: ClientData = clients["soulencanto"]!;
