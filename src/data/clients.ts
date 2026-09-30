@@ -1048,6 +1048,51 @@ export const clients: Record<string, ClientData> = {
       ink: "oklch(0.205 0.01 250)",
     },
   },
+
+  "Dra. Jessica Dantas Odontologia": {
+    slug: "dra-jessica-dantas-odontologia",
+    name: "Dra. Jessica Dantas Odontologia",
+    tagline: "Odontologia",
+    title: "Dra. Jessica Dantas Odontologia — Campina Grande",
+    description:
+      "Atendimento odontológico em Campina Grande - PB.",
+    logo: "/logo.svg",
+    phone: "(83) 99342-7632",
+    phoneDisplay: "(83) 99342-7632",
+    whatsapp: "5583993427632",
+    whatsappMessage:
+      "Olá! Gostaria de conhecer a Dra. Jessica Dantas Odontologia e agendar uma avaliação.",
+    instagram: "",
+    instagramUrl: "",
+    address: {
+      street: "Avenida Presidente Getúlio Vargas, 575",
+      neighborhood: "Centro",
+      city: "Campina Grande",
+      state: "PB",
+      cityState: "Campina Grande — PB",
+      cep: "58400-052",
+      full: "Avenida Presidente Getúlio Vargas, 575 — Sala 1610, Edifício Citymix, Centro, Campina Grande - PB, CEP: 58400-052",
+    },
+    hoursWeekday: "",
+    hoursWeekend: "",
+    rating: "",
+    reviews: "",
+    googleMapsDirectionsUrl:
+      "https://www.google.com/maps/dir/?api=1&destination=Avenida+Presidente+Getúlio+Vargas,+575,+Centro,+Campina+Grande+-+PB,+58400-052",
+    googleMapsEmbedUrl:
+      "https://maps.google.com/maps?q=Avenida+Presidente+Getúlio+Vargas,+575,+Centro,+Campina+Grande+-+PB,+58400-052&t=&z=16&ie=UTF8&iwloc=&output=embed",
+    colors: {
+      petrol: "oklch(0.258 0.039 212)",
+      petrolSoft: "oklch(0.355 0.042 210)",
+      sage: "oklch(0.795 0.031 148)",
+      sageDeep: "oklch(0.545 0.043 152)",
+      bone: "oklch(0.973 0.008 85)",
+      sand: "oklch(0.928 0.018 82)",
+      clay: "oklch(0.868 0.026 78)",
+      graphite: "oklch(0.39 0.008 260)",
+      ink: "oklch(0.205 0.01 250)",
+    },
+  },
 };
 
 export const defaultClient: ClientData = clients["soulencanto"]!;
