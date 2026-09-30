@@ -392,9 +392,9 @@ export function BeforeAfter() {
         </div>
 
         {/* ======================================================== */}
-        {/* DEMAIS CASOS — TODOS COM REVELAÇÃO INTERATIVA AO PASSAR O MOUSE */}
+        {/* DEMAIS CASOS — VISÍVEL APENAS EM TELAS MAIORES (MD+)     */}
         {/* ======================================================== */}
-        <div className="mt-16 border-t border-ink/10 pt-14">
+        <div className="mt-16 hidden border-t border-ink/10 pt-14 md:block">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-8">
             <div>
               <p className="eyebrow text-sage-deep">Mais Casos Interativos</p>

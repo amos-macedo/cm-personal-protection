@@ -45,7 +45,7 @@ export function createSiteConfig(client: ClientData): SiteConfig {
     instagramHandle: client.instagram,
     instagramUrl: client.instagramUrl,
     addressStreet: client.address.street,
-    addressComplement: client.address.neighborhood,
+    addressComplement: client.name,
     neighborhood: client.address.neighborhood,
     cityState: client.address.cityState,
     cep: client.address.cep,

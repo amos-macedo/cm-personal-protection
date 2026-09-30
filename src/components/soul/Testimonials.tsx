@@ -1,9 +1,16 @@
+import { useEffect, useState } from "react";
 import { useClient } from "@/lib/site";
 import { MaskedLines, Reveal } from "./motion-primitives";
 import avatar1 from "@/assets/avatar-1.jpg";
 import avatar2 from "@/assets/avatar-2.jpg";
 import avatar3 from "@/assets/lifestyle-laugh.jpg";
 import avatar4 from "@/assets/avatar-4.jpg";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  type CarouselApi,
+} from "@/components/ui/carousel";
 
 interface Testimonial {
   name: string;
@@ -54,8 +61,78 @@ const reviews: Testimonial[] = [
   },
 ];
 
+function ReviewCard({ rev }: { rev: Testimonial }) {
+  return (
+    <div className="flex h-full flex-col justify-between rounded-xl border border-ink/10 bg-bone p-6 shadow-xs transition-shadow duration-300 hover:shadow-md">
+      <div>
+        {/* Cabeçalho do Card: Avatar + Nome + Tag */}
+        <div className="flex items-center gap-3.5">
+          <img
+            src={rev.avatar}
+            alt={`Foto de ${rev.name}`}
+            loading="lazy"
+            className="h-12 w-12 rounded-full object-cover border border-ink/10 shadow-xs"
+          />
+          <div>
+            <h3 className="font-display text-lg text-ink leading-tight font-medium">
+              {rev.name}
+            </h3>
+            <p className="text-[0.72rem] text-graphite/70">{rev.role}</p>
+          </div>
+        </div>
+
+        {/* Estrelas + Tratamento */}
+        <div className="mt-4 flex items-center justify-between border-t border-ink/8 pt-3">
+          <div className="text-amber-500 text-xs tracking-wider" aria-hidden>
+            ★★★★★
+          </div>
+          <span className="rounded-full bg-sand px-2.5 py-0.5 text-[0.65rem] font-medium text-sage-deep">
+            {rev.treatment}
+          </span>
+        </div>
+
+        {/* Texto do Depoimento */}
+        <p className="mt-3 text-xs leading-relaxed text-graphite">“{rev.text}”</p>
+      </div>
+
+      {/* Rodapé do Card */}
+      <div className="mt-5 flex items-center justify-between border-t border-ink/8 pt-3 text-[0.65rem] text-graphite/60">
+        <span>{rev.date}</span>
+        <span className="flex items-center gap-1 text-sage-deep font-medium">
+          <svg viewBox="0 0 16 16" className="h-3 w-3 fill-current">
+            <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z" />
+          </svg>
+          Google verificado
+        </span>
+      </div>
+    </div>
+  );
+}
+
 export function Testimonials() {
   const { site } = useClient();
+  const [api, setApi] = useState<CarouselApi>();
+  const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    if (!api) return;
+
+    setCurrent(api.selectedScrollSnap());
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap());
+    });
+  }, [api]);
+
+  // Autoplay suave em loop infinito no mobile
+  useEffect(() => {
+    if (!api) return;
+    const interval = setInterval(() => {
+      api.scrollNext();
+    }, 4500);
+
+    return () => clearInterval(interval);
+  }, [api]);
+
   return (
     <section id="depoimentos" className="scroll-mt-24 bg-sand py-[12vh]">
       <div className="mx-auto max-w-7xl px-6 md:px-10">
@@ -111,53 +188,75 @@ export function Testimonials() {
           </Reveal>
         </div>
 
-        {/* Grade de Avaliações Detalhadas com Fotos */}
-        <div className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+        {/* ======================================================== */}
+        {/* MOBILE: Carrossel Infinito com Navegação e Indicadores   */}
+        {/* ======================================================== */}
+        <div className="mt-10 block md:hidden">
+          <Carousel
+            setApi={setApi}
+            opts={{
+              loop: true,
+              align: "start",
+            }}
+            className="w-full"
+          >
+            <CarouselContent className="-ml-3">
+              {reviews.map((rev) => (
+                <CarouselItem key={rev.name} className="pl-3 basis-[85%] sm:basis-[72%]">
+                  <ReviewCard rev={rev} />
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+          </Carousel>
+
+          {/* Controles do Carrossel Mobile: Dots + Setas discretas */}
+          <div className="mt-6 flex items-center justify-between px-1">
+            <div className="flex items-center gap-1.5">
+              {reviews.map((_, idx) => (
+                <button
+                  key={idx}
+                  type="button"
+                  aria-label={`Ir para avaliação ${idx + 1}`}
+                  onClick={() => api?.scrollTo(idx)}
+                  className={`h-1.5 rounded-full transition-all duration-300 ${
+                    current === idx ? "w-6 bg-petrol" : "w-1.5 bg-ink/20"
+                  }`}
+                />
+              ))}
+            </div>
+
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                aria-label="Avaliação anterior"
+                onClick={() => api?.scrollPrev()}
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-ink/15 bg-bone text-ink transition-colors active:bg-sand"
+              >
+                <svg viewBox="0 0 24 24" className="h-4 w-4 fill-none stroke-current stroke-2">
+                  <path d="M15 18l-6-6 6-6" />
+                </svg>
+              </button>
+              <button
+                type="button"
+                aria-label="Próxima avaliação"
+                onClick={() => api?.scrollNext()}
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-ink/15 bg-bone text-ink transition-colors active:bg-sand"
+              >
+                <svg viewBox="0 0 24 24" className="h-4 w-4 fill-none stroke-current stroke-2">
+                  <path d="M9 18l6-6-6-6" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* ======================================================== */}
+        {/* DESKTOP (MD+): Grade Completa Tradicional                */}
+        {/* ======================================================== */}
+        <div className="mt-14 hidden grid-cols-1 gap-6 md:grid md:grid-cols-2 lg:grid-cols-4">
           {reviews.map((rev, i) => (
             <Reveal key={rev.name} delay={0.08 * i}>
-              <div className="flex h-full flex-col justify-between rounded-xl border border-ink/10 bg-bone p-6 shadow-xs transition-shadow duration-300 hover:shadow-md">
-                <div>
-                  {/* Cabeçalho do Card: Avatar + Nome + Tag */}
-                  <div className="flex items-center gap-3.5">
-                    <img
-                      src={rev.avatar}
-                      alt={`Foto de ${rev.name}`}
-                      loading="lazy"
-                      className="h-12 w-12 rounded-full object-cover border border-ink/10 shadow-xs"
-                    />
-                    <div>
-                      <h3 className="font-display text-lg text-ink leading-tight font-medium">
-                        {rev.name}
-                      </h3>
-                      <p className="text-[0.72rem] text-graphite/70">{rev.role}</p>
-                    </div>
-                  </div>
-
-                  {/* Estrelas + Tratamento */}
-                  <div className="mt-4 flex items-center justify-between border-t border-ink/8 pt-3">
-                    <div className="text-amber-500 text-xs tracking-wider" aria-hidden>
-                      ★★★★★
-                    </div>
-                    <span className="rounded-full bg-sand px-2.5 py-0.5 text-[0.65rem] font-medium text-sage-deep">
-                      {rev.treatment}
-                    </span>
-                  </div>
-
-                  {/* Texto do Depoimento */}
-                  <p className="mt-3 text-xs leading-relaxed text-graphite">“{rev.text}”</p>
-                </div>
-
-                {/* Rodapé do Card */}
-                <div className="mt-5 flex items-center justify-between border-t border-ink/8 pt-3 text-[0.65rem] text-graphite/60">
-                  <span>{rev.date}</span>
-                  <span className="flex items-center gap-1 text-sage-deep font-medium">
-                    <svg viewBox="0 0 16 16" className="h-3 w-3 fill-current">
-                      <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z" />
-                    </svg>
-                    Google verificado
-                  </span>
-                </div>
-              </div>
+              <ReviewCard rev={rev} />
             </Reveal>
           ))}
         </div>
