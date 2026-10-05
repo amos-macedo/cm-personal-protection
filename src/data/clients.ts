@@ -2718,6 +2718,49 @@ export const clients: Record<string, ClientData> = {
       ink: "oklch(0.205 0.01 250)",
     },
   },
+
+  "Dra. Laura Baptista / Odonto Kinder": {
+    slug: "dra-laura-baptista-odonto-kinder",
+    name: "Dra. Laura Baptista / Odonto Kinder",
+    tagline: "",
+    title: "Dra. Laura Baptista — Odonto Kinder — Joinville",
+    description: "",
+    logo: "/logo.svg",
+    phone: "(47) 99215-6025",
+    phoneDisplay: "(47) 99215-6025",
+    whatsapp: "5547992156025",
+    whatsappMessage: "Olá! Gostaria de conhecer a Dra. Laura Baptista / Odonto Kinder e agendar uma avaliação.",
+    instagram: "",
+    instagramUrl: "",
+    address: {
+      street: "Rua Santo Agostinho, 273",
+      neighborhood: "Guanabara",
+      city: "Joinville",
+      state: "SC",
+      cityState: "Joinville — SC",
+      cep: "89207-650",
+      full: "Rua Santo Agostinho, 273 — Guanabara, Joinville - SC, CEP: 89207-650",
+    },
+    hoursWeekday: "",
+    hoursWeekend: "",
+    rating: "",
+    reviews: "",
+    googleMapsDirectionsUrl:
+      "https://www.google.com/maps/dir/?api=1&destination=Rua+Santo+Agostinho,+273,+Guanabara,+Joinville+-+SC,+89207-650",
+    googleMapsEmbedUrl:
+      "https://maps.google.com/maps?q=Rua+Santo+Agostinho,+273,+Guanabara,+Joinville+-+SC,+89207-650&t=&z=16&ie=UTF8&iwloc=&output=embed",
+    colors: {
+      petrol: "oklch(0.258 0.039 212)",
+      petrolSoft: "oklch(0.355 0.042 210)",
+      sage: "oklch(0.795 0.031 148)",
+      sageDeep: "oklch(0.545 0.043 152)",
+      bone: "oklch(0.973 0.008 85)",
+      sand: "oklch(0.928 0.018 82)",
+      clay: "oklch(0.868 0.026 78)",
+      graphite: "oklch(0.39 0.008 260)",
+      ink: "oklch(0.205 0.01 250)",
+    },
+  },
 };
 
 export const defaultClient: ClientData = clients["soulencanto"]!;
