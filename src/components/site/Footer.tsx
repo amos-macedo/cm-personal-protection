@@ -1,4 +1,4 @@
-import { brand, contactChannels, nav, services } from "@/content/site";
+import { brand, contactChannels, leadership, nav, services } from "@/content/site";
 import { Logo } from "./Logo";
 
 const linkClass = "text-[0.9375rem] font-light text-fog transition-colors hover:text-bone";
@@ -58,6 +58,16 @@ export function Footer() {
                 </a>
               </li>
             ))}
+            <li>
+              <a
+                href={leadership.instagram}
+                target="_blank"
+                rel="noreferrer noopener"
+                className={linkClass}
+              >
+                @{leadership.instagram.split("/").filter(Boolean).at(-1)}
+              </a>
+            </li>
           </ul>
         </div>
       </div>
