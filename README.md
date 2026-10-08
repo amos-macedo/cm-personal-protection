@@ -2,7 +2,7 @@
 
 Site institucional da **CM Personal Protection®** — segurança pessoal e privada para grandes empresas, personalidades, artistas e grandes eventos.
 
-Página única (TanStack Start + React + Tailwind v4), sem lógica multi-cliente: todo o conteúdo é fixo e vem da apresentação oficial da marca (`public/cm-personal-protection-apresentacao.pdf`).
+Página única (TanStack Start + React + Tailwind v4), sem lógica multi-cliente: todo o conteúdo é fixo e vem da apresentação oficial da marca (`docs/brand/cm-personal-protection-apresentacao.pdf`, fora do site publicado).
 
 ## Onde editar
 

@@ -1,5 +1,4 @@
 import { brand, contact, letter } from "@/content/site";
-import { CtaLink } from "./CtaLink";
 import { Reveal } from "./motion-primitives";
 import { SectionLabel } from "./SectionLabel";
 
@@ -20,9 +19,6 @@ export function Letter() {
               <br />
               {contact.city}
             </p>
-            <CtaLink href={brand.presentationPdf} tone="outline-dark" newTab className="mt-8">
-              Ver apresentação
-            </CtaLink>
           </div>
 
           <div className="text-lg leading-[1.9] font-light text-ink/85">

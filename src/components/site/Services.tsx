@@ -2,7 +2,8 @@ import { useState } from "react";
 import { primaryCtaHref, services } from "@/content/site";
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import { CtaLink } from "./CtaLink";
-import { Reveal } from "./motion-primitives";
+import { MobileRail } from "./MobileRail";
+import { Reveal, RevealGroup, RevealItem } from "./motion-primitives";
 import { SectionLabel } from "./SectionLabel";
 
 type Service = (typeof services)[number];
@@ -25,43 +26,49 @@ export function Services() {
           </CtaLink>
         </Reveal>
 
-        <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-          {services.map((service, i) => (
-            <Reveal as="li" key={service.id} delay={0.08 * i}>
-              <button
-                type="button"
-                onClick={() => setSelected(service)}
-                aria-label={`${service.title} — ver detalhes`}
-                className="group relative flex h-[22rem] w-full flex-col justify-end overflow-hidden rounded-[2px] border border-bone/16 bg-coal px-6 py-8 text-left transition-all duration-500 [transition-timing-function:cubic-bezier(0.25,0.46,0.45,0.94)] hover:-translate-y-2.5 hover:border-bone/40 hover:shadow-[0_20px_40px_rgb(0_0_0/0.8)] lg:h-[26.25rem]"
-              >
-                <img
-                  src={service.image}
-                  alt=""
-                  loading="lazy"
-                  style={{ objectPosition: service.position }}
-                  className="absolute inset-0 z-[1] h-full w-full object-cover brightness-[0.7] grayscale transition-[transform,filter] duration-[800ms] [transition-timing-function:cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:scale-110 group-hover:brightness-90 group-hover:grayscale-0"
-                />
-                <span
-                  aria-hidden
-                  className="absolute inset-0 z-[2] bg-[linear-gradient(180deg,rgb(11_9_5/0.1)_0%,rgb(11_9_5/0.95)_80%)] transition-all duration-500 group-hover:bg-[linear-gradient(180deg,rgb(11_9_5/0)_0%,rgb(11_9_5/0.85)_90%)]"
-                />
-                <span
-                  aria-hidden
-                  className="pointer-events-none absolute inset-0 z-[4] border border-transparent transition-all duration-500 group-hover:inset-2 group-hover:border-bone/10"
-                />
-                <span className="relative z-[3] translate-y-[15px] transition-transform duration-500 group-hover:translate-y-0">
-                  <span className="relative mb-3 inline-block text-sm font-bold tracking-[0.06em] text-bone uppercase [font-stretch:108%]">
-                    {service.title}
-                    <span className="absolute -bottom-1 left-0 h-px w-0 bg-signal transition-[width] duration-500 group-hover:w-full" />
+        <RevealGroup>
+          <MobileRail
+            label="Serviços"
+            gridClassName="md:grid md:grid-cols-2 md:gap-4 lg:grid-cols-5"
+          >
+            {services.map((service) => (
+              <RevealItem as="li" key={service.id}>
+                <button
+                  type="button"
+                  onClick={() => setSelected(service)}
+                  aria-label={`${service.title} — ver detalhes`}
+                  data-cursor="media"
+                  className="group relative flex h-[22rem] w-full flex-col justify-end overflow-hidden rounded-[2px] border border-bone/16 bg-coal px-6 py-8 text-left transition-all duration-500 [transition-timing-function:cubic-bezier(0.25,0.46,0.45,0.94)] hover:-translate-y-2.5 hover:border-bone/40 hover:shadow-[0_20px_40px_rgb(0_0_0/0.8)] lg:h-[26.25rem]"
+                >
+                  <img
+                    src={service.image}
+                    alt=""
+                    loading="lazy"
+                    style={{ objectPosition: service.position }}
+                    className="absolute inset-0 z-[1] h-full w-full object-cover brightness-[0.7] grayscale transition-[transform,filter] duration-[800ms] [transition-timing-function:cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:scale-110 group-hover:brightness-[0.85]"
+                  />
+                  <span
+                    aria-hidden
+                    className="absolute inset-0 z-[2] bg-[linear-gradient(180deg,rgb(11_9_5/0.1)_0%,rgb(11_9_5/0.95)_80%)] transition-all duration-500 group-hover:bg-[linear-gradient(180deg,rgb(11_9_5/0)_0%,rgb(11_9_5/0.85)_90%)]"
+                  />
+                  <span
+                    aria-hidden
+                    className="pointer-events-none absolute inset-0 z-[4] border border-transparent transition-all duration-500 group-hover:inset-2 group-hover:border-bone/10"
+                  />
+                  <span className="relative z-[3] translate-y-[15px] transition-transform duration-500 group-hover:translate-y-0">
+                    <span className="relative mb-3 inline-block text-sm font-bold tracking-[0.06em] text-bone uppercase [font-stretch:108%]">
+                      {service.title}
+                      <span className="absolute -bottom-1 left-0 h-px w-0 bg-signal transition-[width] duration-500 group-hover:w-full" />
+                    </span>
+                    <span className="block text-[0.8125rem] leading-normal font-light text-fog opacity-70 transition-opacity duration-500 group-hover:opacity-100">
+                      {service.summary}
+                    </span>
                   </span>
-                  <span className="block text-[0.8125rem] leading-normal font-light text-fog opacity-70 transition-opacity duration-500 group-hover:opacity-100">
-                    {service.summary}
-                  </span>
-                </span>
-              </button>
-            </Reveal>
-          ))}
-        </ul>
+                </button>
+              </RevealItem>
+            ))}
+          </MobileRail>
+        </RevealGroup>
       </div>
 
       <Dialog open={selected !== null} onOpenChange={(open) => !open && setSelected(null)}>
@@ -71,7 +78,7 @@ export function Services() {
         >
           {selected && (
             <>
-              <div className="relative h-52 sm:h-full sm:min-h-[26rem]">
+              <div data-cursor="media" className="relative h-52 sm:h-full sm:min-h-[26rem]">
                 <img
                   src={selected.image}
                   alt=""

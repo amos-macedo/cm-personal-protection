@@ -1,7 +1,8 @@
 import { Eye, Handshake, Shield, type LucideIcon } from "lucide-react";
-import { about, brand } from "@/content/site";
+import { about, primaryCtaHref } from "@/content/site";
 import { CtaLink } from "./CtaLink";
-import { Reveal } from "./motion-primitives";
+import { MobileRail } from "./MobileRail";
+import { Reveal, RevealGroup, RevealItem } from "./motion-primitives";
 import { SectionLabel } from "./SectionLabel";
 
 const icons: Record<(typeof about.cards)[number]["icon"], LucideIcon> = {
@@ -20,28 +21,36 @@ export function About() {
             {about.title}
           </h2>
           <p className="mb-10 text-lg leading-relaxed text-ink/80">{about.text}</p>
-          <CtaLink href={brand.presentationPdf} tone="outline-dark" newTab>
-            Conheça a apresentação
+          <CtaLink href={primaryCtaHref} tone="outline-dark">
+            Solicitar proposta
           </CtaLink>
         </Reveal>
 
-        <div className="grid gap-6 sm:grid-cols-3 lg:w-[58%]">
-          {about.cards.map((card, i) => {
-            const Icon = icons[card.icon];
-            return (
-              <Reveal
-                key={card.title}
-                delay={0.1 * (i + 1)}
-                className="flex min-h-[15.5rem] flex-col items-center border border-ink/15 bg-ink/[0.03] px-6 py-10 text-center transition-all duration-300 hover:-translate-y-1 hover:border-ink/30"
-              >
-                <Icon aria-hidden strokeWidth={1.5} className="mb-6 h-10 w-10 text-ink" />
-                <h3 className="mb-4 text-sm font-bold tracking-[0.08em] uppercase [font-stretch:108%]">
-                  {card.title}
-                </h3>
-                <p className="text-[0.8125rem] leading-normal text-ink/75">{card.text}</p>
-              </Reveal>
-            );
-          })}
+        <div className="lg:w-[58%]">
+          <RevealGroup>
+            <MobileRail
+              label="Nossos pilares"
+              tone="light"
+              gridClassName="md:grid md:grid-cols-3 md:gap-6"
+            >
+              {about.cards.map((card) => {
+                const Icon = icons[card.icon];
+                return (
+                  <RevealItem
+                    as="li"
+                    key={card.title}
+                    className="flex min-h-[15.5rem] flex-col items-center border border-ink/15 bg-ink/[0.03] px-6 py-10 text-center transition-all duration-300 hover:-translate-y-1 hover:border-ink/30"
+                  >
+                    <Icon aria-hidden strokeWidth={1.5} className="mb-6 h-10 w-10 text-ink" />
+                    <h3 className="mb-4 text-sm font-bold tracking-[0.08em] uppercase [font-stretch:108%]">
+                      {card.title}
+                    </h3>
+                    <p className="text-[0.8125rem] leading-normal text-ink/75">{card.text}</p>
+                  </RevealItem>
+                );
+              })}
+            </MobileRail>
+          </RevealGroup>
         </div>
       </div>
     </section>

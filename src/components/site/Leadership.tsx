@@ -1,21 +1,20 @@
 import { ShieldCheck } from "lucide-react";
 import { brand, leadership } from "@/content/site";
 import { CtaLink } from "./CtaLink";
-import { Reveal } from "./motion-primitives";
+import { CountUp, CurtainImage, Reveal } from "./motion-primitives";
 import { SectionLabel } from "./SectionLabel";
 
 export function Leadership() {
   return (
     <section id="direcao" className="section-pad bg-night">
       <div className="container-cm flex flex-col gap-12 lg:flex-row lg:items-center lg:gap-16">
-        <Reveal className="lg:w-[45%]">
-          <div className="relative">
-            <img
-              src={leadership.image}
-              alt={`${leadership.name}, ${leadership.role} da ${brand.name}`}
-              loading="lazy"
-              className="aspect-[4/5] w-full object-cover object-[50%_30%]"
-            />
+        <div className="lg:w-[45%]">
+          <CurtainImage
+            src={leadership.image}
+            alt={`${leadership.name}, ${leadership.role} da ${brand.name}`}
+            className="aspect-[4/5]"
+            imgClassName="object-[50%_30%]"
+          >
             <div className="absolute right-4 bottom-4 max-w-[calc(100%-2rem)] rounded-[14px] border border-bone/12 bg-night/70 px-5 py-4 shadow-[0_10px_30px_rgb(0_0_0/0.45)] backdrop-blur-[14px] md:right-5 md:bottom-5 md:max-w-[78%] md:px-[22px]">
               <p className="flex items-center gap-2.5 font-bold text-bone">
                 <ShieldCheck aria-hidden className="h-[18px] w-[18px] shrink-0" strokeWidth={1.6} />
@@ -23,8 +22,8 @@ export function Leadership() {
               </p>
               <p className="label mt-1.5 !tracking-[0.14em] text-stone">{brand.name}</p>
             </div>
-          </div>
-        </Reveal>
+          </CurtainImage>
+        </div>
 
         <Reveal delay={0.1} className="lg:w-[55%]">
           <SectionLabel>{leadership.label}</SectionLabel>
@@ -44,7 +43,9 @@ export function Leadership() {
             {leadership.stats.map((stat) => (
               <div key={stat.label}>
                 <dt className="sr-only">{stat.label}</dt>
-                <dd className="font-display text-[2rem] leading-none text-bone">{stat.value}</dd>
+                <dd className="font-display text-[2rem] leading-none text-bone">
+                  <CountUp value={stat.value} />
+                </dd>
                 <dd className="label mt-3 !text-[0.625rem] text-stone">{stat.label}</dd>
               </div>
             ))}

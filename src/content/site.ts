@@ -1,5 +1,3 @@
-import heroPortrait from "@/assets/cm/hero-portrait.webp";
-import lightTrails from "@/assets/cm/light-trails.webp";
 import corridor from "@/assets/cm/corridor.webp";
 import vipPortrait from "@/assets/cm/vip-portrait.webp";
 import team from "@/assets/cm/team.webp";
@@ -8,6 +6,12 @@ import clientTiagoTessmann from "@/assets/cm/client-tiagotessmann.webp";
 import clientPriscilaZillo from "@/assets/cm/client-priscilazillo.webp";
 import clientIcaroDeCarvalho from "@/assets/cm/client-icarodecarvalho.webp";
 import clientBeRudolph from "@/assets/cm/client-berudolph.webp";
+import vipParceiro from "@/assets/cm/vip-parceiro.webp";
+import vipSubido from "@/assets/cm/vip-subido.webp";
+import eventoNovoMercadoEquipe from "@/assets/cm/evento-novo-mercado-equipe.webp";
+import eventoEquipeCompleta from "@/assets/cm/evento-equipe-completa.webp";
+import eventoOperacaoPalco from "@/assets/cm/evento-operacao-palco.webp";
+import perfilObservacao from "@/assets/cm/perfil-observacao.webp";
 
 export const brand = {
   name: "CM Personal Protection",
@@ -15,17 +19,15 @@ export const brand = {
   tagline: "Especializado em segurança privada",
   title: "CM Personal Protection® | Segurança pessoal e privada",
   description:
-    "Serviço especializado em segurança pessoal para garantir a proteção e tranquilidade dos nossos clientes. Segurança privada de grandes empresas, personalidades, artistas e grandes eventos.",
-  presentationPdf: "/cm-personal-protection-apresentacao.pdf",
+    "Segurança privada e pessoal para eventos ao vivo, empresas e artistas: avaliação de riscos, planejamento, equipe especializada e discrição. Base em São Paulo.",
 } as const;
 
-// TODO: confirmar WhatsApp e Instagram oficiais. Canais vazios não são renderizados;
-// com `whatsapp` preenchido os CTAs passam a abrir o WhatsApp e o botão flutuante aparece.
+// TODO: confirmar o Instagram oficial. Canais vazios não são renderizados.
 export const contact = {
-  whatsapp: "",
+  whatsapp: "5524999927165",
   whatsappMessage:
     "Olá! Vim pelo site da CM Personal Protection e gostaria de solicitar uma proposta.",
-  phoneDisplay: "",
+  phoneDisplay: "(24) 99992-7165",
   email: "cmpersonalprotection@gmail.com",
   instagram: "",
   city: "São Paulo",
@@ -35,9 +37,21 @@ export const whatsappUrl = contact.whatsapp
   ? `https://wa.me/${contact.whatsapp}?text=${encodeURIComponent(contact.whatsappMessage)}`
   : null;
 
+const proposalBrief = [
+  "Olá, equipe CM Personal Protection.",
+  "",
+  "Gostaria de solicitar uma proposta de segurança.",
+  "",
+  "Evento ou empresa:",
+  "Data(s):",
+  "Local:",
+  "Público estimado:",
+  "Quem precisa de proteção:",
+].join("\n");
+
 export const mailtoUrl = `mailto:${contact.email}?subject=${encodeURIComponent(
   "Solicitação de proposta — CM Personal Protection",
-)}`;
+)}&body=${encodeURIComponent(proposalBrief)}`;
 
 export const primaryCtaHref = whatsappUrl ?? mailtoUrl;
 
@@ -58,10 +72,6 @@ export const contactChannels: Channel[] = [
 ].filter((c): c is Channel => Boolean(c));
 
 export const images = {
-  heroPortrait,
-  lightTrails,
-  corridor,
-  vipPortrait,
   team,
 };
 
@@ -76,13 +86,13 @@ export const nav = [
 
 export const hero = {
   titleLines: ["Sua segurança é", "nossa prioridade."],
-  lead: "Oferecemos um serviço especializado em segurança pessoal para garantir a proteção e tranquilidade dos nossos clientes.",
-  micro: ["Segurança pessoal", "Personalidades e artistas", "Grandes eventos"],
+  lead: "Segurança privada para eventos ao vivo, empresas e artistas — da avaliação de riscos à operação, com discrição em cada detalhe.",
+  micro: ["Eventos ao vivo", "Empresas", "Artistas e personalidades"],
 };
 
 export const about = {
   label: "Sobre nós",
-  title: "Proteção e tranquilidade para nossos clientes.",
+  title: "Segurança privada para grandes eventos, empresas e artistas.",
   text: "Nossa equipe é composta por profissionais altamente treinados e experientes no campo da segurança, com um foco específico em segurança pessoal em diversas situações, incluindo eventos.",
   cards: [
     {
@@ -112,8 +122,8 @@ export const services = [
       "Realizamos uma avaliação abrangente dos riscos envolvidos, levando em consideração fatores como o tipo de evento, o perfil dos participantes e o ambiente.",
       "Com essa análise, podemos desenvolver um plano de segurança personalizado para atender às necessidades específicas do evento.",
     ],
-    image: heroPortrait,
-    position: "55% 22%",
+    image: perfilObservacao,
+    position: "45% 35%",
   },
   {
     id: "planejamento",
@@ -134,8 +144,8 @@ export const services = [
       "Nossa equipe é composta por profissionais qualificados, com ampla experiência em segurança pessoal. Eles possuem técnicas avançadas de segurança, gerenciamento de multidões, primeiros socorros e gerenciamento de crises.",
       "Nossos especialistas trabalharão em estreita colaboração com você para garantir uma experiência segura.",
     ],
-    image: clientPedroSobral,
-    position: "35% 30%",
+    image: eventoNovoMercadoEquipe,
+    position: "42% 30%",
   },
   {
     id: "tecnologia",
@@ -179,9 +189,9 @@ export const differentials = {
 
 export const vip = {
   image: clientPriscilaZillo,
-  label: "Segurança pessoal",
-  title: "Proteção para figuras públicas e VIPs.",
-  text: "A segurança pessoal para figuras públicas ou VIP (Very Important Person) é uma necessidade essencial para garantir a integridade física, a privacidade e a tranquilidade dos indivíduos em questão.",
+  label: "Segurança pessoal VIP",
+  title: "Proteção para quem está no centro do seu evento.",
+  text: "Palestrantes, artistas e executivos são figuras públicas. A segurança pessoal especializada garante a integridade física, a privacidade e a tranquilidade deles — e a do público ao redor.",
   contexts: [
     "eventos",
     "aparições públicas",
@@ -196,23 +206,31 @@ export const vip = {
 
 export const method = {
   label: "Nosso processo",
-  title: "Segurança planejada para cada cliente.",
+  title: "Do primeiro contato ao fim do evento.",
   steps: [
     {
       title: "Contato",
-      text: "Entendemos suas necessidades específicas de segurança pessoal.",
+      text: "Você nos conta o evento, o público e quem precisa de proteção.",
+      image: vipPortrait,
+      position: "50% 25%",
     },
     {
       title: "Avaliação",
       text: "Analisamos o tipo de evento, o perfil dos participantes e o ambiente.",
+      image: corridor,
+      position: "50% 35%",
     },
     {
       title: "Planejamento",
-      text: "Elaboramos uma proposta e um plano de segurança personalizados.",
+      text: "Proposta personalizada com prevenção, controle de acesso, triagem e protocolos de emergência.",
+      image: clientTiagoTessmann,
+      position: "60% 30%",
     },
     {
       title: "Operação",
-      text: "Garantimos a segurança efetiva durante todo o evento, com discrição.",
+      text: "Equipe em campo durante todo o evento, em coordenação com as autoridades locais.",
+      image: eventoOperacaoPalco,
+      position: "55% 45%",
     },
   ],
 };
@@ -253,10 +271,11 @@ export const gallery = {
     {
       title: "Eventos ao vivo",
       slides: [
-        { image: clientPedroSobral, caption: "@pedrosobral" },
-        { image: clientTiagoTessmann, caption: "@tiagotessmann" },
-        { image: clientIcaroDeCarvalho, caption: "@icarode.carvalho" },
-        { image: team, caption: "Equipe CM Personal Protection" },
+        { image: clientPedroSobral, caption: "Subido ao Vivo · @pedrosobral" },
+        { image: clientTiagoTessmann, caption: "Extremo ao Vivo · @tiagotessmann" },
+        { image: clientIcaroDeCarvalho, caption: "O Novo Mercado ao Vivo · @icarode.carvalho" },
+        { image: eventoNovoMercadoEquipe, caption: "O Novo Mercado ao Vivo · Equipe CM" },
+        { image: eventoEquipeCompleta, caption: "Equipe CM Personal Protection" },
       ],
     },
     {
@@ -264,8 +283,8 @@ export const gallery = {
       slides: [
         { image: clientBeRudolph, caption: "@berudolph" },
         { image: clientPriscilaZillo, caption: "@priscila_zillo" },
-        { image: heroPortrait, caption: "Segurança pessoal" },
-        { image: corridor, caption: "CM Personal Protection" },
+        { image: vipSubido, caption: "Subido ao Vivo" },
+        { image: vipParceiro, caption: "Segurança pessoal VIP" },
       ],
     },
   ],
@@ -285,8 +304,8 @@ export const letter = {
 
 export const keyPoints = {
   label: "Segurança pessoal",
-  title: "Por que ela é essencial.",
-  text: "Aqui estão alguns pontos-chave que destacam a importância do uso de segurança pessoal.",
+  title: "O que está em jogo no seu evento.",
+  text: "Quando o evento recebe figuras públicas, a segurança pessoal especializada deixa de ser opcional.",
   items: [
     {
       title: "Proteção contra ameaças físicas",
@@ -294,59 +313,59 @@ export const keyPoints = {
     },
     {
       title: "Multidões e controle de acesso",
-      text: "Gerenciar e controlar multidões em eventos, aparições públicas ou locais movimentados, evitando situações de caos ou pânico.",
+      text: "Gerenciar o público em eventos, aparições e locais movimentados, garantindo a segurança de todos e evitando situações de caos ou pânico.",
     },
     {
       title: "Gerenciamento de crises",
       text: "Uma equipe treinada para agir rapidamente em emergências, coordenar com as autoridades competentes e garantir o bem-estar do VIP.",
     },
     {
-      title: "Confiança e bem-estar",
-      text: "Concentrar-se nas atividades profissionais e pessoais sem a preocupação constante com a própria segurança.",
+      title: "Foco no palco",
+      text: "Seu convidado se concentra na apresentação, sem a preocupação constante com a própria segurança.",
     },
     {
       title: "Imagem profissional",
-      text: "Uma medida de profissionalismo e responsabilidade diante dos desafios e riscos associados à fama.",
+      text: "Contratar segurança especializada demonstra profissionalismo e responsabilidade diante dos riscos de reunir público e figuras públicas.",
     },
     {
       title: "Segurança sob medida",
-      text: "Cada VIP tem necessidades específicas, e uma equipe especializada adapta seus serviços a elas.",
+      text: "Cada evento e cada convidado têm necessidades específicas, e o plano de segurança é adaptado a elas.",
     },
   ],
 };
 
 export const faq = [
   {
-    q: "Por que eu realmente preciso de segurança pessoal?",
-    a: "A segurança pessoal para figuras públicas ou VIPs é uma necessidade essencial para garantir a integridade física, a privacidade e a tranquilidade. Ela ajuda a prevenir, identificar e neutralizar ameaças, gerenciar multidões e agir com rapidez em situações de crise.",
+    q: "Vocês fazem a segurança de eventos ao vivo?",
+    a: "Sim. Esse é o nosso foco: já atuamos em eventos como Protagon, O Novo Mercado ao Vivo, Subido ao Vivo e Extremo ao Vivo, cuidando da segurança das figuras públicas e do público.",
   },
   {
-    q: "Quantos profissionais serão necessários para o meu caso?",
+    q: "Quantos profissionais serão necessários para o meu evento?",
     a: "Depende da avaliação de riscos: consideramos o tipo de evento, o perfil dos participantes e o ambiente para desenvolver um plano de segurança personalizado.",
+  },
+  {
+    q: "Vocês atendem empresas e artistas?",
+    a: "Sim. Somos especializados em segurança privada de grandes empresas, personalidades, artistas e grandes eventos.",
   },
   {
     q: "Os profissionais são qualificados?",
     a: "Sim. Nossa equipe é composta por profissionais qualificados, com ampla experiência em segurança pessoal, técnicas avançadas de segurança, gerenciamento de multidões, primeiros socorros e gerenciamento de crises.",
   },
   {
-    q: "A segurança pode acompanhar eventos e aparições públicas?",
-    a: "Sim. Atuamos em eventos, aparições públicas e locais movimentados, garantindo a segurança de todos os envolvidos e evitando situações de caos ou pânico.",
-  },
-  {
-    q: "A proteção pode ser estendida ao meu círculo mais próximo?",
-    a: "Sim. A segurança pessoal especializada protege o VIP e seu círculo mais próximo, incluindo seus entes queridos.",
-  },
-  {
     q: "Que tecnologia pode ser utilizada?",
     a: "Sistemas de vigilância por vídeo, detecção de metais, controle de acesso eletrônico e outros dispositivos de segurança de última geração, de acordo com as necessidades do evento.",
   },
   {
-    q: "Como fica a minha privacidade?",
-    a: "Atuamos com profissionalismo e confidencialidade em todos os momentos, garantindo a segurança sem causar intrusão ou desconforto.",
+    q: "A segurança vai incomodar o público e os convidados?",
+    a: "Não. Atuamos com profissionalismo e confidencialidade em todos os momentos, garantindo a segurança sem causar intrusão ou desconforto aos participantes do evento.",
+  },
+  {
+    q: "Como solicitar uma proposta?",
+    a: "Chame no WhatsApp (24) 99992-7165 ou envie um e-mail com data, local, porte do público e quem precisa de proteção. Com essas informações, elaboramos uma proposta personalizada para o seu evento.",
   },
 ];
 
 export const finalCta = {
-  title: "Vamos discutir as suas necessidades?",
-  text: "Entre em contato conosco e elaboraremos uma proposta personalizada para atender às suas expectativas de segurança pessoal.",
+  title: "Conte-nos sobre o seu evento.",
+  text: "Envie data, local, porte do público e quem precisa de proteção. Elaboramos uma proposta personalizada e confidencial.",
 };

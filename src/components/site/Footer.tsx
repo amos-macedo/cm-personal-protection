@@ -58,16 +58,6 @@ export function Footer() {
                 </a>
               </li>
             ))}
-            <li>
-              <a
-                href={brand.presentationPdf}
-                target="_blank"
-                rel="noreferrer noopener"
-                className={linkClass}
-              >
-                Apresentação (PDF)
-              </a>
-            </li>
           </ul>
         </div>
       </div>

@@ -1,3 +1,4 @@
+import { Intro } from "./Intro";
 import { SmoothScroll } from "./SmoothScroll";
 import { Cursor } from "./Cursor";
 import { Header } from "./Header";
@@ -13,7 +14,6 @@ import { Gallery } from "./Gallery";
 import { Letter } from "./Letter";
 import { KeyPoints } from "./KeyPoints";
 import { Faq } from "./Faq";
-import { Presentation } from "./Presentation";
 import { Contact } from "./Contact";
 import { Footer } from "./Footer";
 import { FloatingWhatsapp } from "./FloatingWhatsapp";
@@ -21,6 +21,7 @@ import { FloatingWhatsapp } from "./FloatingWhatsapp";
 export function HomePage() {
   return (
     <>
+      <Intro />
       <SmoothScroll />
       <Cursor />
       <Header />
@@ -37,7 +38,6 @@ export function HomePage() {
         <Letter />
         <KeyPoints />
         <Faq />
-        <Presentation />
         <Contact />
       </main>
       <Footer />

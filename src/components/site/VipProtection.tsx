@@ -1,20 +1,18 @@
 import { primaryCtaHref, vip } from "@/content/site";
 import { CtaLink } from "./CtaLink";
-import { Reveal } from "./motion-primitives";
+import { CurtainImage, Reveal } from "./motion-primitives";
 import { SectionLabel } from "./SectionLabel";
 
 export function VipProtection() {
   return (
     <section id="vip" className="section-pad bg-ink">
       <div className="container-cm flex flex-col gap-12 lg:flex-row lg:items-center lg:gap-16">
-        <Reveal className="lg:w-1/2">
-          <img
-            src={vip.image}
-            alt="Equipe CM Personal Protection na segurança pessoal de @priscila_zillo"
-            loading="lazy"
-            className="aspect-video w-full object-cover object-[50%_20%]"
-          />
-        </Reveal>
+        <CurtainImage
+          src={vip.image}
+          alt="Equipe CM Personal Protection na segurança pessoal de @priscila_zillo"
+          className="aspect-video lg:w-1/2"
+          imgClassName="object-[50%_20%]"
+        />
 
         <Reveal delay={0.1} className="flex flex-col justify-center lg:w-1/2">
           <SectionLabel>{vip.label}</SectionLabel>

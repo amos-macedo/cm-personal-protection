@@ -8,10 +8,17 @@ import { EASE } from "./motion-primitives";
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const [open, setOpen] = useState(false);
-  const { scrollY } = useScroll();
+  const { scrollY, scrollYProgress } = useScroll();
 
-  useMotionValueEvent(scrollY, "change", (v) => setScrolled(v > 80));
+  useMotionValueEvent(scrollY, "change", (v) => {
+    const delta = v - (scrollY.getPrevious() ?? v);
+    setScrolled(v > 80);
+    if (v < 160) setHidden(false);
+    else if (delta > 4) setHidden(true);
+    else if (delta < -4) setHidden(false);
+  });
 
   useEffect(() => {
     document.documentElement.style.overflow = open ? "hidden" : "";
@@ -30,9 +37,11 @@ export function Header() {
   return (
     <>
       <header
+        onFocusCapture={() => setHidden(false)}
         className={cn(
-          "fixed inset-x-0 top-0 z-50 flex h-[5.375rem] items-center border-b border-bone/10 transition-[background-color,backdrop-filter] duration-300",
+          "fixed inset-x-0 top-0 z-50 flex h-[5.375rem] items-center border-b border-bone/10 transition-[background-color,backdrop-filter,translate] duration-500 [transition-timing-function:var(--ease-cm)]",
           scrolled ? "bg-night/90 backdrop-blur-[16px]" : "bg-night/10",
+          hidden && !open && "-translate-y-full",
         )}
       >
         <div className="container-cm flex items-center justify-between gap-6">
@@ -40,7 +49,7 @@ export function Header() {
             <Logo className="h-9 md:h-10" />
           </a>
 
-          <nav aria-label="Navegação principal" className="hidden items-center gap-8 lg:flex">
+          <nav aria-label="Navegação principal" className="hidden items-center gap-7 xl:flex">
             {nav.map((item) => (
               <a
                 key={item.href}
@@ -66,7 +75,7 @@ export function Header() {
               onClick={() => setOpen(true)}
               aria-label="Abrir menu"
               aria-expanded={open}
-              className="flex h-11 w-11 flex-col items-center justify-center gap-1.5 text-bone lg:hidden"
+              className="flex h-11 w-11 flex-col items-center justify-center gap-1.5 text-bone xl:hidden"
             >
               <span className="block h-0.5 w-6 bg-current" />
               <span className="block h-0.5 w-6 bg-current" />
@@ -74,6 +83,11 @@ export function Header() {
             </button>
           </div>
         </div>
+        <motion.span
+          aria-hidden
+          className="absolute inset-x-0 -bottom-px h-px origin-left bg-signal/80"
+          style={{ scaleX: scrollYProgress }}
+        />
       </header>
 
       <AnimatePresence>
@@ -82,7 +96,7 @@ export function Header() {
             role="dialog"
             aria-modal="true"
             aria-label="Menu"
-            className="fixed inset-0 z-[60] flex flex-col overflow-y-auto bg-night lg:hidden"
+            className="fixed inset-0 z-[60] flex flex-col overflow-y-auto bg-night xl:hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}

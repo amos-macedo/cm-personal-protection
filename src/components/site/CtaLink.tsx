@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const tones = {
@@ -35,7 +36,7 @@ export function CtaLink({
       onClick={onClick}
       {...(external ? { target: "_blank", rel: "noreferrer noopener" } : {})}
       className={cn(
-        "group inline-flex items-center justify-center gap-2.5 rounded-full px-8 py-4 text-xs font-bold tracking-[0.08em] uppercase [font-stretch:108%] transition-all duration-300 hover:-translate-y-0.5",
+        "group inline-flex items-center justify-center gap-2.5 rounded-full whitespace-nowrap px-8 py-4 text-xs font-bold tracking-[0.08em] uppercase [font-stretch:108%] transition-all duration-300 hover:-translate-y-0.5",
         tones[tone],
         className,
       )}
@@ -43,9 +44,11 @@ export function CtaLink({
       {icon}
       <span>{children}</span>
       {arrow && (
-        <span aria-hidden className="transition-transform duration-300 group-hover:translate-x-1">
-          →
-        </span>
+        <ArrowRight
+          aria-hidden
+          strokeWidth={2}
+          className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1"
+        />
       )}
     </a>
   );
