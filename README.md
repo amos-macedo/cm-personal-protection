@@ -1,24 +1,21 @@
-# Pixel Perfect Copy
+# CM Personal Protection
 
-Implement exactly the screenshot and nothing else
+Site institucional da **CM Personal Protection®** — segurança pessoal e privada para grandes empresas, personalidades, artistas e grandes eventos.
 
-This project was built with [Lovable](https://lovable.dev).
+Página única (TanStack Start + React + Tailwind v4), sem lógica multi-cliente: todo o conteúdo é fixo e vem da apresentação oficial da marca (`public/cm-personal-protection-apresentacao.pdf`).
 
-## Build with Lovable
+## Onde editar
 
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/be7617c6-6ec5-4222-af4c-d933136596e2).
+- **Textos, serviços, FAQ, clientes e imagens:** `src/content/site.ts`
+- **Canais de contato (WhatsApp, telefone, e-mail, Instagram):** objeto `contact` em `src/content/site.ts`. Canais vazios não aparecem; com `whatsapp` preenchido, os CTAs passam a abrir o WhatsApp e o botão flutuante é exibido.
+- **Cores e tipografia:** `src/styles.css`
+- **Seções:** `src/components/site/`
 
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
-
-## Development
-
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+## Desenvolvimento
 
 ```sh
-git clone <this-repository-url>
-cd <repository-name>
 npm i
 npm run dev
 ```
+
+Este projeto está conectado ao [Lovable](https://lovable.dev/projects/be7617c6-6ec5-4222-af4c-d933136596e2): commits enviados à branch conectada sincronizam com o editor.
